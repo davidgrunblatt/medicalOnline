@@ -1,0 +1,4 @@
+{
+    "jwtPrivateKey":"medical_jwtPrivateKey",
+    "db":"medical_db"
+}
