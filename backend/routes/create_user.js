@@ -6,7 +6,6 @@ const bcrypt = require('bcrypt');
 const User = require('../models/userModel');
 
 router.post('/', async (req,res) => {
-    try {
         // Search for username and password
         const checkForUserName = await User
         .findOne({
@@ -25,6 +24,7 @@ router.post('/', async (req,res) => {
             return res.status(400).send('Email is already in use.');
         }
 
+        try {
         // create a new user based off User model
         const newUser = new User({
             username: req.body.username,

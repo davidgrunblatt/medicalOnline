@@ -18,9 +18,6 @@ if (!config.get('jwtPrivateKey')) {
     throw new Error('FATAL ERROR: jwtPrivateKey is not defined.');
   }
 
-// MIDDLEWARE 
-app.use(bodyParser.urlencoded({ extended: true }));
-
 // CONNECT TO PORT 
 app.listen(port, () => {
     console.log(`Successfully connected to port: ${port}`);
