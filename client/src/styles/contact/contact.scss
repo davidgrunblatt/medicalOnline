@@ -1,0 +1,41 @@
+
+.contact_container {
+    background-image: url('../../images/madrid.jpg'); 
+    height: 600px;
+    margin-bottom: var(--margin_bottom); 
+    background-size: cover; 
+    background-position: center;
+
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    transition-property: opacity;
+    transition-duration: 5s;
+
+    h3 {
+        text-align: center;
+    }
+    
+    form {
+        padding: 20px;
+        margin: 0 auto;
+        width: 300px;
+        background: rgba(230, 225, 225, .7);
+    }
+}
+
+/* BACKGROUND TRANSITION */
+
+.shanghai {
+    background-image: url('../../images/shanghai.jpg'); 
+}
+
+.paris {
+    background-image: url('../../images/paris.jpg'); 
+}
+
+.madrid {
+    background-image: url('../../images/madrid.jpg'); 
+}

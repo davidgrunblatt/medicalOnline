@@ -9,8 +9,6 @@ const Patient = require('../models/Patients');
 // fileupload package middleware to parse file
 router.use(fileUpload());
 
-
-
 router.post('/', async(req, res) => {
   if (!req.files || Object.keys(req.files).length === 0) {
     return res.status(400).send('No files were uploaded...');
@@ -52,7 +50,7 @@ router.post('/', async(req, res) => {
 
     // res.send(account);
   });
-  res.send(account);
+  res.send(file);
 });
 
 

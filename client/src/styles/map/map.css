@@ -1,0 +1,11 @@
+.map_container {
+  display: 100%;
+  margin-bottom: var(--margin_bottom);
+  -webkit-box-shadow: var(--box_shadow);
+          box-shadow: var(--box_shadow);
+}
+
+.map_container img {
+  width: 100%;
+}
+/*# sourceMappingURL=map.css.map */
