@@ -12,7 +12,11 @@ if(!process.env.jwtPrivateKey) throw new Error((err) => console.log('JWT Key is 
 require('./startup/routes')(app); // ROUTES 
 
 // EXPRESS.STATIC - PUBLIC FOLDER 
-app.use(express.static('./public'));
+// app.use(express.static('./public'));
+
+if(process.env.NODE_ENV === 'production'){
+    app.use(express.static('./client/build')); 
+}
 
 // CONNECT TO PORT
 app.listen(port, () => console.log(`Server is listening on port ${port}`)); 
