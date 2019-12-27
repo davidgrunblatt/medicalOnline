@@ -32,16 +32,24 @@ class Jumbotron extends React.Component{
                 this.setState({ image2: four }); 
             }
         }, 5000); 
+
+
+        this.timeOut = setTimeout(() => {
+            const jumbotron = document.querySelector('.jumbotron_parent');
+            jumbotron.classList.remove('slide_out'); 
+            jumbotron.classList.add('slide_in');
+        }, 2000);
     }
 
     componentWillUnmount(){
         console.log(`unmounting jumbotron and clearing ${this.interval}`); 
         clearInterval(this.interval);
+        clearTimeout(this.timeOut); 
     }
     render(){
         return(
             <div>
-                <main className = 'jumbotron_parent'>
+                <main className = 'jumbotron_parent slide_transition slide_out'>
                     <div>
                         <img src = {this.state.image1} alt = '' />
                     </div>

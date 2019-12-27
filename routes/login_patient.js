@@ -4,18 +4,18 @@ const router = express.Router();
 const bcrypt = require('bcrypt');
 const Patient = require('../models/Patients'); 
 
-router.get('/', async (req, res) => {
+router.get('/', async(req, res) => {
     try {
         // FIND USERNAME
         const find_patient = await Patient
         .findOne({
-            username: req.body.username
+            username: req.query.username
         });
         // STATUS 400 IF !USERNAME 
         if(!find_patient) return res.status(400).send('Username Not Found...');
         
         // COMPARE PASSWORD
-        const validate_password = await bcrypt.compare(req.body.password, find_patient.password); 
+        const validate_password = await bcrypt.compare(req.query.password, find_patient.password); 
         // STATUS 400 IF !PASSWORD
         if(!validate_password) return res.status(400).send('Password is Incorrect...');
 

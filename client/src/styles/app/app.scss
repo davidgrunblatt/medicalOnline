@@ -46,6 +46,22 @@ $boxShadow: 0px 2px 1px silver;
     opacity: 0; 
 }
 
+
+/* SLIDE IN EFFECT ON LOAD */ 
+.slide_transition {
+    position: relative;
+    transition-property: left;
+    transition-duration: 2s;
+}
+
+.slide_out {
+    left: 2000px;
+}
+
+.slide_in {
+    left: 0px;
+}
+
 @media screen and (max-width: 767px){
     .jumbotron_parent div {
         width: 100%;

@@ -1,1 +1,5 @@
-/* No CSS *//*# sourceMappingURL=dashboard.css.map */
+#dashboard_parent_container {
+  position: absolute;
+  width: 100%;
+}
+/*# sourceMappingURL=dashboard.css.map */

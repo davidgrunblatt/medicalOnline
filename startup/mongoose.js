@@ -1,8 +1,11 @@
 
 const mongoose = require('mongoose');
 
-mongoose.connect("mongodb+srv://dpg1919:Claptoncocaine13@fureloscluster-sbeuj.mongodb.net/test?retryWrites=true&w=majority", 
-{ useNewUrlParser: true })
+mongoose.connect(process.env.mongo, 
+{
+    useNewUrlParser: true, 
+    useUnifiedTopology: true
+})
 .then( () => console.log('Successfully connected to MongoDB...') )
 .catch( (ex) => console.log('Unable to connect to MongoDB...', ex) );
 
