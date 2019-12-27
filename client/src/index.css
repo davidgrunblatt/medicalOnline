@@ -12,6 +12,7 @@ body {
 :root {
     --margin_bottom: 30px;
     --box_shadow: 1px 2px 1px silver;
+    --background_color: rgb(245, 243, 243); 
 }
 
 /* FADE IN BODY */
@@ -24,11 +25,4 @@ body {
 
 .fade_in {
     opacity: 1;
-}
-
-/* FOOTER SECTION */
-
-footer {
-    height: 150px;
-    background: grey;
 }

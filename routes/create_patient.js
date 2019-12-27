@@ -3,6 +3,7 @@ const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcrypt'); 
 const Patient = require('../models/Patients'); 
+const keyGenerator = require('../middleware/keyGenerator'); 
 
 router.post('/', async (req, res) => {
     try {
@@ -17,7 +18,7 @@ router.post('/', async (req, res) => {
         if(find_patient_username){
             return res.status(400).send('Username Already Exists...');
         }
-        if(find_patient_username){
+        if(find_patient_email){
             return res.status(400).send('Email Already in Use...'); 
         }
 
@@ -28,8 +29,10 @@ router.post('/', async (req, res) => {
             password: req.body.password,
             phone: req.body.phone,
             fullname: req.body.fullname,
-            isAdmin: false
+            isAdmin: false,
+            chatKey: keyGenerator()
         });
+
 
         // HASH PASSWORD 
         const salt = await bcrypt.genSalt(10);

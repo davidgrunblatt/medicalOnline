@@ -16,18 +16,15 @@ $boxShadow: 0px 2px 1px silver;
 /* JUMBOTRON SECTION */
 
 .jumbotron_parent {
-    height: 500px;
     box-shadow: $boxShadow;
+    margin-bottom: var(--margin_bottom);
     display:flex;
+    justify-content: center;
+    padding-bottom: 30px;
 
     div {
-        background-size: cover;
-        background-position: center;
-        width: 100%;
+        width: 80%;
         height: 500px;
-        display:flex;
-        justify-content: center;
-        align-items:center;
         transition-property: opacity; 
         transition-duration: 3s; 
     }
@@ -36,6 +33,8 @@ $boxShadow: 0px 2px 1px silver;
         width: 100%;
         height: 500px;
         flex:1;
+        box-shadow: var(--box_shadow); 
+        border: solid thick white;
     }
 
     div:nth-of-type(1) { 
@@ -45,4 +44,10 @@ $boxShadow: 0px 2px 1px silver;
 
 .toggle_opacity {
     opacity: 0; 
+}
+
+@media screen and (max-width: 767px){
+    .jumbotron_parent div {
+        width: 100%;
+    }
 }

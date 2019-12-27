@@ -8,7 +8,7 @@ router.post('/', auth, async(req, res) => {
    try {
         // FIND ACCOUNT WITH USER ID FOUND IN REQ.PATIENT. req.patient comes from auth middleware .verify()
         const account = await Patient
-        .findById({ _id: req.patient.user_id })
+        .findById({ _id: req.body.userID})
         .select({
             username: 1,
             email: 1,

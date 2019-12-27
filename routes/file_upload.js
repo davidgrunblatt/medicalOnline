@@ -16,7 +16,7 @@ router.post('/', async(req, res) => {
 
     // DECODED JWT PAYLOAD 
     // const decoded = await req.patient; 
-    const decoded = '5dfd9f8afc5bdf1bef11b78c'; 
+    const decoded = '5dfd9f8afc5bdf1bef11b78c'; // for testing purposes, replace with ^^ later. 
 
   // FIND ACCOUNT WITH USER ID FOUND IN REQ.PATIENT. req.patient comes from auth middleware .verify()
   const account = await Patient

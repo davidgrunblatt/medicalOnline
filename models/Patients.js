@@ -33,7 +33,12 @@ const patient_schema = new mongoose.Schema({
     documents: {
         type: Array
     },
-    isAdmin: Boolean
+    isAdmin: Boolean,
+    chatKey: {
+        type: String,
+        required: true,
+        maxlength: 4
+    }
 });
 
 // GENERATE AUTH TOKEN 

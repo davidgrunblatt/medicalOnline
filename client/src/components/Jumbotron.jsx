@@ -14,7 +14,7 @@ class Jumbotron extends React.Component{
         const jumbotron_2 = document.querySelector('.jumbotron_parent div:nth-child(2)');
         let count = 0; 
 
-        setInterval(() => {
+        this.interval = setInterval(() => {
             jumbotron_1.classList.toggle('toggle_opacity'); 
             count++;
             if(count > 3) { count = 0; }
@@ -32,6 +32,11 @@ class Jumbotron extends React.Component{
                 this.setState({ image2: four }); 
             }
         }, 5000); 
+    }
+
+    componentWillUnmount(){
+        console.log(`unmounting jumbotron and clearing ${this.interval}`); 
+        clearInterval(this.interval);
     }
     render(){
         return(
