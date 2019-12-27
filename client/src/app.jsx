@@ -6,6 +6,7 @@ import axios from 'axios';
 // COMPONENTS
 import Jumbotron from './components/Jumbotron'; 
 import Navbar from './components/Navbar'; 
+import Login from './components/Login'; 
 import Dashboard from './components/Dashboard'; 
 
 
@@ -13,7 +14,7 @@ class App extends React.Component {
     constructor(props){
         super(props);
         this.state = { 
-            page: 'dashboard',
+            page: '',
             username: '',
             password: '',
             logged: false,
@@ -21,7 +22,8 @@ class App extends React.Component {
                 username: '',
                 fullname: '',
                 email: '',
-                phone: ''
+                phone: '',
+                chatKey: ''
             }
         }
     }
@@ -55,10 +57,14 @@ class App extends React.Component {
                     username: user.data.username,
                     fullname: user.data.fullname,
                     email: user.data.email,
-                    phone: user.data.phone
+                    phone: user.data.phone,
+                    chatKey: user.data.chatKey
                 }          
             }, () => console.log('updpated global state: ', this.state)); 
 
+            // UPDATE STATE LOGGED: TRUE
+            this.setState({ logged: true }); 
+            
             // SAVING JWT IN LOCAL APPLICATION STORAGE 
             const token = user.headers['x-auth-token'];
             localStorage.setItem('token', token); 
@@ -69,10 +75,22 @@ class App extends React.Component {
     // COMPONENTDIDMOUNT TRIGGERS FADE IN ON LOAD 
     componentDidMount(){
         this.body_fade_in();
+
+        // ON MOUNT CHECK IF JWT, TO RENDER PAGE
+        const token = localStorage.getItem('token');
+        if(token) { this.setState({ logged: true }) }
     }
 
 
     render() { 
+        // PROPS FOR LOGIN COMPONENT
+        const login_props = {
+            change: this.login_change,
+            submit: this.login_submit,
+            username: this.state.username,
+            password: this.state.password,
+        }
+        const user_data = this.state.userData; 
         return ( 
             <div id = 'parent_container' className = 'fade_transition'>
                 <header className = 'header'>
@@ -80,10 +98,10 @@ class App extends React.Component {
                     <Navbar /> 
                 </header>
                 <main>
-                    { this.state.page === 'landing' ? <Jumbotron /> : <Dashboard  change = {this.login_change} 
-                    submit = {this.login_submit} username = {this.state.username} password = {this.state.password}
-                    /> }
+                    <Jumbotron />
+                    <Login login = {login_props} />
                 </main>
+                { this.state.logged ? <Dashboard data = {user_data} /> : <h1>Login nigga</h1> }
             </div>
          );
     }

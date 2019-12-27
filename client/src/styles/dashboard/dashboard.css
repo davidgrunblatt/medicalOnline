@@ -1,5 +1,18 @@
-#dashboard_parent_container {
-  position: absolute;
-  width: 100%;
+.login_container {
+  z-index: 2;
+  margin-top: 50px;
+  height: 200px;
+}
+
+.login_container form {
+  width: 500px;
+  margin: 0 auto;
+}
+
+.login_container form .btn {
+  background: #ffbe30;
+  border: none;
+  color: white;
+  font-weight: 700;
 }
 /*# sourceMappingURL=dashboard.css.map */
