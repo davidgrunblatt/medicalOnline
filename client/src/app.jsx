@@ -10,6 +10,7 @@ import Navbar from './components/Navbar';
 import Login from './components/Login'; 
 import Dashboard from './components/Dashboard'; 
 import Chat from './components/Chat'; 
+import Contact from './components/Contact'; 
 
 
 class App extends React.Component {
@@ -71,17 +72,15 @@ class App extends React.Component {
         this.setState({ dummy }); 
     }
 
-    // FILE UPLOAD
+    // FILE UPLOAD  // FILE UPLOAD  // FILE UPLOAD
     file_change = (e) => {
         this.setState({ file: e.target.files[0] }, () => console.log('file state', this.state.file)); 
     }
 
-    // I AM GOD!!!!!!!!!!!!!!!!
     file_submit = async (e) => {
         e.preventDefault();
         const form = new FormData();
         form.append('file', this.state.file); 
-        console.log(...form); 
 
         await axios.post('/api/file_upload', form, {
             headers: {
@@ -150,7 +149,7 @@ class App extends React.Component {
 
         // ON MOUNT CHECK IF JWT, TO RENDER PAGE
         const token = localStorage.getItem('token');
-        if(token) { this.setState({ logged: true }) }
+        // if(token) { this.setState({ logged: true }) }
     }
 
 
@@ -177,11 +176,12 @@ class App extends React.Component {
                 </header>
                 <main>
                     <Jumbotron />
-                    <Login login = {login_props} />
+                    { this.state.logged ? <Dashboard data = {user_data} submit = {this.update_submit}
+                    change = {this.update_change} file = {file} /> : <Login login = {login_props} /> }
                 </main>
-                { this.state.logged ? <Dashboard data = {user_data} submit = {this.update_submit}
-                change = {this.update_change} file = {file} /> : <h1>Login nigga</h1> }
-                <Chat />
+                <footer>
+                    <Contact /> 
+                </footer>
             </div>
          );
     }

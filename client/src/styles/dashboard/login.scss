@@ -1,0 +1,44 @@
+
+
+/* LOGIN SECTION 4 DASHBOARD */ 
+.login_container {
+    background-image: url('../../images/madrid.jpg'); 
+    background-position: center;
+    background-size: cover;
+    position: absolute;
+    height: 550px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 30px;
+
+    box-shadow: 10px 5px 5px silver;
+    border: solid thick rgba(240, 210, 113, .6);
+
+    span {
+        padding: 10px;
+    }
+
+    h1 {
+        font-size: 20px;
+    }
+    img {
+        // position: absolute;
+        width: 30px;
+        margin-top:25px;
+        border-radius: 50%;
+        border: solid thick white;
+        float: right;
+    }
+    form {
+       width: 300px;
+    }
+}
+
+.login_container div {
+    padding: 20px;
+    background: rgba(240, 237, 237, 0.8);
+    border: solid thick rgb(255, 253, 253);
+}

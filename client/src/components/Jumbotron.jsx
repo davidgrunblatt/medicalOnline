@@ -12,7 +12,12 @@ class Jumbotron extends React.Component{
     componentDidMount(){
         const jumbotron_1 = document.querySelector('.jumbotron_parent div:nth-child(1)');
         const jumbotron_2 = document.querySelector('.jumbotron_parent div:nth-child(2)');
+        const jumbo_divs = document.querySelectorAll('.jumbo_div');
         let count = 0; 
+
+        this.timeout = setTimeout(() => {
+           jumbo_divs.forEach( div => div.classList.add('fade_in') ); 
+        }, 8000); 
 
         this.interval = setInterval(() => {
             jumbotron_1.classList.toggle('toggle_opacity'); 
@@ -38,7 +43,7 @@ class Jumbotron extends React.Component{
             const jumbotron = document.querySelector('.jumbotron_parent');
             jumbotron.classList.remove('slide_out'); 
             jumbotron.classList.add('slide_in');
-        }, 2000);
+        }, 4000);
     }
 
     componentWillUnmount(){
@@ -50,10 +55,10 @@ class Jumbotron extends React.Component{
         return(
             <div>
                 <main className = 'jumbotron_parent slide_transition slide_out'>
-                    <div>
+                    <div className = 'jumbo_div fade_transition'>
                         <img src = {this.state.image1} alt = '' />
                     </div>
-                    <div>
+                    <div className = 'jumbo_div fade_transition'>
                         <img src = {this.state.image2} alt = '' />
                     </div>
                 </main>

@@ -20,7 +20,14 @@ $boxShadow: 0px 2px 1px silver;
     margin-bottom: var(--margin_bottom);
     display:flex;
     justify-content: center;
+
+    padding-top: 30px;
     padding-bottom: 30px;
+    box-shadow: 10px 5px 5px silver;
+    border: solid thick rgba(240, 210, 113, .9);
+    background-image: url('../../images/paris.jpg');
+    background-size: cover;
+    background-position: center;
 
     div {
         width: 80%;
@@ -50,16 +57,16 @@ $boxShadow: 0px 2px 1px silver;
 /* SLIDE IN EFFECT ON LOAD */ 
 .slide_transition {
     position: relative;
-    transition-property: left;
+    transition-property: right;
     transition-duration: 2s;
 }
 
 .slide_out {
-    left: 2000px;
+    right: 2000px;
 }
 
 .slide_in {
-    left: 0px;
+    right: 0px;
 }
 
 @media screen and (max-width: 767px){

@@ -3,18 +3,11 @@
   border: none;
   color: white;
   font-weight: 700;
+  border: solid thick rgba(255, 254, 254, 0.6);
 }
 
-/* LOGIN SECTION 4 DASHBOARD */
-.login_container {
-  z-index: 2;
-  margin-top: 50px;
-  height: 200px;
-}
-
-.login_container form {
-  width: 500px;
-  margin: 0 auto;
+.btn-file {
+  background: silver;
 }
 
 /* DASHBOARD UI */
@@ -29,21 +22,58 @@
   background-image: url("../../images/shanghai.jpg");
   background-position: center;
   background-size: cover;
+  -webkit-box-shadow: 10px 5px 5px silver;
+          box-shadow: 10px 5px 5px silver;
+  border: solid thick rgba(255, 206, 44, 0.9);
+  position: absolute;
+  width: 100%;
 }
 
 #dashboard_container {
-  width: 500px;
-  padding: 10px;
-  background: rgba(255, 255, 255, 0.6);
+  width: 100%;
+  padding: 20px;
+  background: -webkit-gradient(linear, left top, right top, color-stop(9%, rgba(225, 225, 255, 0.2)), color-stop(54%, rgba(225, 225, 255, 0.2)), color-stop(100%, rgba(221, 249, 255, 0.2)), to(rgba(180, 180, 255, 0.2)));
+  background: linear-gradient(90deg, rgba(225, 225, 255, 0.2) 9%, rgba(225, 225, 255, 0.2) 54%, rgba(221, 249, 255, 0.2) 100%, rgba(180, 180, 255, 0.2) 100%);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+#dashboard_container img {
+  width: 300px;
+  float: right;
 }
 
 #dashboard_container li {
-  margin-left: -40px;
+  margin-left: -50px;
+  font-weight: 500;
+  padding: 10px;
+  font-size: 20px;
+}
+
+#dashboard_container span {
+  color: #b41717;
 }
 
 #dashboard_container form {
   padding: 20px;
-  margin: 0 auto;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+#dashboard_container section {
+  background: -webkit-gradient(linear, left top, right top, color-stop(9%, rgba(225, 225, 255, 0.2)), color-stop(54%, rgba(225, 225, 255, 0.2)), color-stop(100%, rgba(221, 249, 255, 0.2)), to(rgba(180, 180, 255, 0.2)));
+  background: linear-gradient(90deg, rgba(225, 225, 255, 0.2) 9%, rgba(225, 225, 255, 0.2) 54%, rgba(221, 249, 255, 0.2) 100%, rgba(180, 180, 255, 0.2) 100%);
+  background: rgba(255, 255, 255, 0.6);
+  border: solid thick #fcf7f7;
+  padding: 10px;
+  -webkit-box-shadow: 3px 3px 7px silver;
+          box-shadow: 3px 3px 7px silver;
 }
 
 #dashboard_container section ul {

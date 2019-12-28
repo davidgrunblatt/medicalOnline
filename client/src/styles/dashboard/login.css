@@ -1,0 +1,53 @@
+/* LOGIN SECTION 4 DASHBOARD */
+.login_container {
+  background-image: url("../../images/madrid.jpg");
+  background-position: center;
+  background-size: cover;
+  position: absolute;
+  height: 550px;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-bottom: 30px;
+  -webkit-box-shadow: 10px 5px 5px silver;
+          box-shadow: 10px 5px 5px silver;
+  border: solid thick rgba(240, 210, 113, 0.6);
+}
+
+.login_container span {
+  padding: 10px;
+}
+
+.login_container h1 {
+  font-size: 20px;
+}
+
+.login_container img {
+  width: 30px;
+  margin-top: 25px;
+  border-radius: 50%;
+  border: solid thick white;
+  float: right;
+}
+
+.login_container form {
+  width: 300px;
+}
+
+.login_container div {
+  padding: 20px;
+  background: rgba(240, 237, 237, 0.8);
+  border: solid thick #fffdfd;
+}
+/*# sourceMappingURL=login.css.map */

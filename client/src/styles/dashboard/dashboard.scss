@@ -4,22 +4,11 @@
     border: none;
     color: white;
     font-weight: 700;
+    border: solid thick rgba(255, 254, 254, .6);
 }
 
 .btn-file {
     background: silver;
-}
-
-/* LOGIN SECTION 4 DASHBOARD */ 
-.login_container {
-    z-index: 2;
-    margin-top: 50px;
-    height: 200px;
-
-    form {
-        width: 500px;
-        margin: 0 auto;
-    }
 }
 
 /* DASHBOARD UI */ 
@@ -31,23 +20,55 @@
     background-image: url('../../images/shanghai.jpg'); 
     background-position: center;
     background-size: cover;
+    box-shadow: 10px 5px 5px silver;
+    border: solid thick rgba(255, 206, 44, 0.9);
+
+    position: absolute;
+    width: 100%;
 }
 
 #dashboard_container {
-    width: 500px;
-    padding: 10px;
-    background: rgba(255, 255, 255, 0.6);
+    width: 100%;
+    padding: 20px;
+    background: linear-gradient(90deg, rgba(225,225,255, .2) 9%, rgba(225,225,255, .2) 54%, rgba(221,249,255,.2) 100%, rgba(180,180,255,.2) 100%);
+    display: flex;
+    flex-direction: column;
+
+
+    img {
+        width: 300px;
+        float: right;
+    }
 
     li {
-        margin-left: -40px;
+        margin-left: -50px;
+        font-weight: 500;
+        padding: 10px;
+        font-size: 20px;
+    }
+
+    span {
+        color: rgb(180, 23, 23);
     }
     form {
         padding: 20px;
-        margin: 0 auto;
+        flex:1;
     }
 }
-
+#dashboard_container section {
+    background: linear-gradient(90deg, rgba(225,225,255, .2) 9%, rgba(225,225,255, .2) 54%, rgba(221,249,255,.2) 100%, rgba(180,180,255,.2) 100%);
+    background: rgba(255, 255, 255, .6);
+    border: solid thick rgb(252, 247, 247);
+    padding: 10px;
+    box-shadow: 3px 3px 7px silver;
+}
 #dashboard_container section ul {
     list-style: none;
 }
 
+
+@media screen and (max-width: 424px){
+    // #dashboard_container {
+    //     padding: 0px;
+    // }
+}

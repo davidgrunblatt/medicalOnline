@@ -15,7 +15,7 @@ require('./startup/routes')(app); // ROUTES
 app.use(express.static('./public'));
 
 if(process.env.NODE_ENV === 'production'){
-    app.use(express.static('./client/build')); 
+    app.use(express.static('/client/build')); 
 }
 
 // CONNECT TO PORT
