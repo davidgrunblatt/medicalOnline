@@ -3,11 +3,13 @@ import './index.css';
 import './styles/app/app.css'; 
 import 'bootstrap/dist/css/bootstrap.css'; 
 import axios from 'axios'; 
+import jwtDecode from 'jwt-decode'; 
 // COMPONENTS
 import Jumbotron from './components/Jumbotron'; 
 import Navbar from './components/Navbar'; 
 import Login from './components/Login'; 
 import Dashboard from './components/Dashboard'; 
+import Chat from './components/Chat'; 
 
 
 class App extends React.Component {
@@ -24,8 +26,19 @@ class App extends React.Component {
                 email: '',
                 phone: '',
                 chatKey: ''
-            }
+            },
+            file: ''
         }
+    }
+
+    // RETRIEVE JWT 
+    jwt = () => {
+        const token = localStorage.getItem('token');
+        return token; 
+    }
+    jwt_decode = () => {
+        const decoded = jwtDecode(this.jwt());
+        return decoded; 
     }
 
     // FADE IN BODY, CALLED FROM COMPONENT DID MOUNT 
@@ -39,6 +52,65 @@ class App extends React.Component {
     // ON CHANGE LOGIN FORM HANDLER 
     login_change = (e) => {
         this.setState({ [e.target.name]: e.target.value }); 
+    }
+    // ON CHANGE FOR EDIT FORM 
+    update_change = (e) => {
+        // create a dummy object to update properties then this.setState replacing old userData object with dummy. 
+        const dummy = this.state.userData; 
+
+        if(e.target.name === 'fullname'){
+            dummy.fullname = e.target.value;
+        } 
+        if(e.target.name === 'email'){
+            dummy.email = e.target.value;
+        }
+        if(e.target.name === 'phone'){
+            dummy.phone = e.target.value;
+        }
+
+        this.setState({ dummy }); 
+    }
+
+    // FILE UPLOAD
+    file_change = (e) => {
+        this.setState({ file: e.target.files[0] }, () => console.log('file state', this.state.file)); 
+    }
+
+    // I AM GOD!!!!!!!!!!!!!!!!
+    file_submit = async (e) => {
+        e.preventDefault();
+        const form = new FormData();
+        form.append('file', this.state.file); 
+        console.log(...form); 
+
+        await axios.post('/api/file_upload', form, {
+            headers: {
+                "Content-type": "multipart/form-data",
+            }
+        })
+        .then( data => console.log('file sent', data) )
+        .catch( ex => console.log('unable to send file', ex) ); 
+    }
+
+    // UPDATE ACCOUNT METHOD
+    update_submit = async (e) => {
+        e.preventDefault();
+        // JWT DECODED TO RETRIEVE USER_ID FROM JWT PAYLOAD AND USE ID TO MAKE MONGO UPDATE 
+        let dummy = this.jwt_decode();
+
+        // AXIOS POST REQ TO UPDATE USER INFO
+        await axios.post('/api/update_patient', {
+            _id: dummy.user_id, // ID FROM JWT PAYLOAD
+            fullname: this.state.userData.fullname,
+            email: this.state.userData.email,
+            phone: this.state.userData.phone
+        }, {
+            headers: {
+                'x-auth-token':this.jwt()
+            }
+        })
+        .then( data => console.log('Updated data sent!', data) )
+        .catch( ex => console.log('Updated failed...', ex) ); 
     }
 
     // LOGIN SUBMIT METHOD
@@ -90,7 +162,13 @@ class App extends React.Component {
             username: this.state.username,
             password: this.state.password,
         }
+        // PROPS FOR DASHBOARD, THIS.STATE.USERDATA
         const user_data = this.state.userData; 
+        const file = {
+            file_change: this.file_change,
+            file_submit: this.file_submit
+        }
+
         return ( 
             <div id = 'parent_container' className = 'fade_transition'>
                 <header className = 'header'>
@@ -101,7 +179,9 @@ class App extends React.Component {
                     <Jumbotron />
                     <Login login = {login_props} />
                 </main>
-                { this.state.logged ? <Dashboard data = {user_data} /> : <h1>Login nigga</h1> }
+                { this.state.logged ? <Dashboard data = {user_data} submit = {this.update_submit}
+                change = {this.update_change} file = {file} /> : <h1>Login nigga</h1> }
+                <Chat />
             </div>
          );
     }

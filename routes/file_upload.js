@@ -14,9 +14,9 @@ router.post('/', async(req, res) => {
     return res.status(400).send('No files were uploaded...');
   }
 
-    // DECODED JWT PAYLOAD 
-    // const decoded = await req.patient; 
-    const decoded = '5dfd9f8afc5bdf1bef11b78c'; // for testing purposes, replace with ^^ later. 
+  // DECODED JWT PAYLOAD 
+  // const decoded = await req.patient; 
+  const decoded = '5e052c61569a3f6beb2b80b0'; // for testing purposes, replace with ^^ later. 
 
   // FIND ACCOUNT WITH USER ID FOUND IN REQ.PATIENT. req.patient comes from auth middleware .verify()
   const account = await Patient
@@ -50,7 +50,7 @@ router.post('/', async(req, res) => {
 
     // res.send(account);
   });
-  res.send(file);
+  res.send('Successfully saved file!');
 });
 
 

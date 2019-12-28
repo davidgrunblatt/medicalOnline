@@ -1,4 +1,16 @@
 
+.btn {
+    background: rgb(255, 190, 48);
+    border: none;
+    color: white;
+    font-weight: 700;
+}
+
+.btn-file {
+    background: silver;
+}
+
+/* LOGIN SECTION 4 DASHBOARD */ 
 .login_container {
     z-index: 2;
     margin-top: 50px;
@@ -7,12 +19,35 @@
     form {
         width: 500px;
         margin: 0 auto;
-
-        .btn {
-            background: rgb(255, 190, 48);
-            border: none;
-            color: white;
-            font-weight: 700;
-        }
     }
 }
+
+/* DASHBOARD UI */ 
+
+#dashboard_parent_container {
+    display:flex;
+    justify-content: center;
+    margin-bottom: 30px;
+    background-image: url('../../images/shanghai.jpg'); 
+    background-position: center;
+    background-size: cover;
+}
+
+#dashboard_container {
+    width: 500px;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.6);
+
+    li {
+        margin-left: -40px;
+    }
+    form {
+        padding: 20px;
+        margin: 0 auto;
+    }
+}
+
+#dashboard_container section ul {
+    list-style: none;
+}
+

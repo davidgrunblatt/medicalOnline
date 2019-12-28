@@ -1,16 +1,78 @@
 
 import React from 'react';
+import axios from 'axios'; 
+import '../styles/dashboard/dashboard.css'; 
 
 class Dashboard extends React.Component {
-    state = {  }
-
-    componentDidMount(){
-        console.log("props from dashboard", this.props); 
+    state = {
+        toggle: 0
     }
+    edit_toggle = (e) => {
+        if(this.state.toggle === 0){
+            this.setState({ toggle: 1 });
+        } 
+        else  {
+            this.setState({ toggle: 0 }); 
+        }
+    }
+
     render() { 
         return ( 
-            <div>
-                <h1>Your dashboard</h1>
+            <div id = 'dashboard_parent_container'>
+                <div id = 'dashboard_container'>
+                    <h2>Welcome back {this.props.data.username} </h2>
+                    <h6>All the information you want to share with your Dr. is here. <br />
+                        Feel free to update it at any time below. 
+                    </h6>
+                    <section>
+                        <ul>
+                            <li>Username: {this.props.data.username}</li>
+                            <li>Full Name: {this.props.data.fullname}</li>
+                            <li>Email: {this.props.data.email}</li>
+                            <li>Phone #: {this.props.data.phone}</li>
+                        </ul>
+                    </section>
+                    {/* EDIT SECTION TO TOGGLE  */}
+                    <button className = 'btn btn-sm btn-primary btn-block mb-3' 
+                    onClick = {this.edit_toggle}>{this.state.toggle === 0 ? "Edit Info" : "Back"}</button>
+                    
+                    {/* EDIT FORM */}
+                    {this.state.toggle === 1 && <section id = "dashboard_edit" >
+                        <form>
+                            <div className = 'form-group'>
+                                <input type = 'text' name = 'fullname' value = {this.props.data.fullname} 
+                                onChange = {this.props.change} className = 'form-control'
+                                /> 
+                            </div>
+                            <div className = 'form-group'>
+                                <input type = 'email' name = 'email' value = {this.props.data.email} 
+                                onChange = {this.props.change} className = 'form-control'
+                                />
+                            </div>
+                            <div className = 'form-group'>
+                                <input type = 'string' name = 'phone' value = {this.props.data.phone} 
+                                onChange = {this.props.change} className = 'form-control'
+                                />
+                            </div>
+                            <input type = 'submit' onClick = {this.props.submit} className = 'btn btn-block'
+                            value = 'Save Changes' /> 
+                        </form>
+                    </section>}
+
+                    {/* FILE UPLOAD FORM */}
+                    <h3>Send Dr. Furelos a file</h3>
+                    <form>
+                        <div className = 'form-group'>
+                            <input type = 'text' placeholder = 'file name' className = 'form-control mb-2' />
+                            <input type = 'file' name = 'file' onChange = {this.props.file.file_change}
+                            className = 'btn-primary btn-block'
+                            />
+                        </div>
+                        <input type = 'submit' className = 'btn btn-primary btn-block' onClick = {this.props.file.file_submit}
+                        value = 'Send File' /> 
+                    </form>
+
+                </div>
             </div>
          );
     }
