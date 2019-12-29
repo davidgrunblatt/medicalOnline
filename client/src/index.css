@@ -27,6 +27,10 @@ body {
     opacity: 1;
 }
 
+.toggle_opacity {
+    opacity: 0; 
+}
+
 
 @media screen and (min-width: 1440px){
    /* #parent_container {

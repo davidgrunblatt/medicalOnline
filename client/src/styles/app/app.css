@@ -29,16 +29,13 @@
   border: solid thick rgba(240, 210, 113, 0.9);
   background-image: url("../../images/mapa.jpg");
   background-size: contain;
+  background-repeat: no-repeat;
   background-position: center;
 }
 
 .jumbotron_parent div {
   width: 80%;
   height: 500px;
-  -webkit-transition-property: opacity;
-  transition-property: opacity;
-  -webkit-transition-duration: 3s;
-          transition-duration: 3s;
 }
 
 .jumbotron_parent div img {
@@ -54,10 +51,6 @@
 
 .jumbotron_parent div:nth-of-type(1) {
   position: absolute;
-}
-
-.toggle_opacity {
-  opacity: 0;
 }
 
 /* SLIDE IN EFFECT ON LOAD */
@@ -80,6 +73,11 @@
 @media screen and (max-width: 767px) {
   .jumbotron_parent div {
     width: 100%;
+  }
+  .jumbotron_parent {
+    background-image: url("../../images/mapa_mobile.png");
+    background-position: center;
+    background-size: contain;
   }
 }
 /*# sourceMappingURL=app.css.map */

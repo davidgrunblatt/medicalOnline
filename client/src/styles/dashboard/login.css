@@ -40,10 +40,6 @@
   float: right;
 }
 
-.login_container form {
-  width: 300px;
-}
-
 .login_container div {
   padding: 20px;
   background: rgba(240, 237, 237, 0.8);

@@ -7,7 +7,8 @@ import four from '../images/four.jpg';
 class Jumbotron extends React.Component{
     state = {
         image1: one,
-        image2: two
+        image2: two,
+        count: 0
     }
     componentDidMount(){
         const jumbotron_1 = document.querySelector('.jumbotron_parent div:nth-child(1)');
@@ -16,12 +17,15 @@ class Jumbotron extends React.Component{
         let count = 0; 
 
         this.timeout = setTimeout(() => {
-           jumbo_divs.forEach( div => div.classList.add('fade_in') ); 
-        }, 7000); 
+        //    jumbo_divs.forEach( div => div.classList.add('fade_in') ); 
+        jumbotron_1.classList.add('fade_in'); 
 
-        this.interval = setInterval(() => {
-            jumbotron_1.classList.toggle('toggle_opacity'); 
+           this.interval = setInterval(() => {
+            console.log(count); 
+            jumbotron_1.classList.toggle('toggle_opacity'); // DIV 1 - FADE OUT
+            jumbotron_2.classList.add('fade_in'); // DIV 2 - FADE IN 
             count++;
+            
             if(count > 3) { count = 0; }
 
             if(count == 0){
@@ -38,12 +42,14 @@ class Jumbotron extends React.Component{
             }
         }, 5000); 
 
+        }, 6000); 
+
 
         this.timeOut = setTimeout(() => {
             const jumbotron = document.querySelector('.jumbotron_parent');
             jumbotron.classList.remove('slide_out'); 
             jumbotron.classList.add('slide_in');
-        }, 4000);
+        }, 2000);
     }
 
     componentWillUnmount(){
