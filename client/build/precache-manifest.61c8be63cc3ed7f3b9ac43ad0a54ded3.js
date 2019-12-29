@@ -1,27 +1,27 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "45b9ac81ffcccdb8149f164a9ea9c23c",
+    "revision": "52712cab691cde09accc741c5d433d26",
     "url": "/index.html"
   },
   {
-    "revision": "177b287be02766dc8c58",
+    "revision": "d9d6033a206d4c748ba3",
     "url": "/static/css/2.64a99b10.chunk.css"
   },
   {
-    "revision": "d0b850450c23a5d7f16c",
-    "url": "/static/css/main.79f19bcc.chunk.css"
+    "revision": "a93a4e099bd6876bba89",
+    "url": "/static/css/main.2e255f2b.chunk.css"
   },
   {
-    "revision": "177b287be02766dc8c58",
-    "url": "/static/js/2.3fd334ba.chunk.js"
+    "revision": "d9d6033a206d4c748ba3",
+    "url": "/static/js/2.e9e75e61.chunk.js"
   },
   {
     "revision": "c6d01cb19213691bc81a274434d00fe7",
-    "url": "/static/js/2.3fd334ba.chunk.js.LICENSE"
+    "url": "/static/js/2.e9e75e61.chunk.js.LICENSE"
   },
   {
-    "revision": "d0b850450c23a5d7f16c",
-    "url": "/static/js/main.b1efc4c5.chunk.js"
+    "revision": "a93a4e099bd6876bba89",
+    "url": "/static/js/main.402641a4.chunk.js"
   },
   {
     "revision": "6b3defdcd169e5f902d5",
@@ -44,16 +44,20 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/static/media/madrid.a9221904.jpg"
   },
   {
+    "revision": "bd16ca03fd54d7a7ad11c715bf1ccca6",
+    "url": "/static/media/mapa.bd16ca03.jpg"
+  },
+  {
     "revision": "a2297d0683fcc8172d564c8fa1a1d73b",
     "url": "/static/media/one.a2297d06.jpg"
   },
   {
-    "revision": "63d82946ab79d8379a8592bb2ef05311",
-    "url": "/static/media/paris.63d82946.jpg"
-  },
-  {
     "revision": "ad098096be5453e2f02f16794fe8c296",
     "url": "/static/media/shanghai.ad098096.jpg"
+  },
+  {
+    "revision": "dd15be3ea6b1690ea0edb9cbe7a2edcf",
+    "url": "/static/media/tenerife.dd15be3e.jpg"
   },
   {
     "revision": "298ea34e7689ad9cc4f7252ad9d50d94",
