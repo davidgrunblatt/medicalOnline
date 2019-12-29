@@ -5,7 +5,6 @@ const nodemailer = require('nodemailer');
 const path = require('path'); 
 
 router.post('/', async (req, res) => {
-
     const new_user = {
         name: req.body.name,
         subject: req.body.subject,
@@ -30,11 +29,6 @@ router.post('/', async (req, res) => {
         to: "dpg1919@gmail.com", // list of receivers
         subject: new_user.subject, // Subject line
         text: '', // plain text body
-        // ATTACHMENTS FOR FILES. replace path with User specific routes
-        attachments: {
-            filename: 'x-ray',
-            path: path.join("images", '5dfd9f8afc5bdf1bef11b78c_working.png')
-        },
         html: `<p>name: ${new_user.name} <br/>
                   message: ${new_user.message}
               </p>` // html body

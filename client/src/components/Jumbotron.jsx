@@ -17,7 +17,7 @@ class Jumbotron extends React.Component{
 
         this.timeout = setTimeout(() => {
            jumbo_divs.forEach( div => div.classList.add('fade_in') ); 
-        }, 8000); 
+        }, 7000); 
 
         this.interval = setInterval(() => {
             jumbotron_1.classList.toggle('toggle_opacity'); 

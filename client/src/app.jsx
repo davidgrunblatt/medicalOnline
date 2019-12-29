@@ -85,6 +85,7 @@ class App extends React.Component {
         await axios.post('/api/file_upload', form, {
             headers: {
                 "Content-type": "multipart/form-data",
+                "x-auth-token": this.jwt()
             }
         })
         .then( data => console.log('file sent', data) )
@@ -149,7 +150,7 @@ class App extends React.Component {
 
         // ON MOUNT CHECK IF JWT, TO RENDER PAGE
         const token = localStorage.getItem('token');
-        if(token) { this.setState({ logged: true }) }
+        // if(token) { this.setState({ logged: true }) }
     }
 
 
