@@ -24,7 +24,7 @@ function Login(props){
                                 placeHolder = "password"
                         />
                         </div>
-                        <input type = 'submit' className = 'btn btn-block' 
+                        <input type = 'submit' className = 'btn btn-block btn-primary' 
                             value = 'login' onClick = {props.login.submit}
                         />
                     </form>

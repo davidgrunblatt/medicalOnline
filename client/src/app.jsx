@@ -182,6 +182,7 @@ class App extends React.Component {
                 </main>
                 <footer>
                     <Contact /> 
+                    <Chat /> 
                 </footer>
             </div>
          );
