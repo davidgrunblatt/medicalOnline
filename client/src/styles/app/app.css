@@ -27,8 +27,8 @@
   -webkit-box-shadow: 10px 5px 5px silver;
           box-shadow: 10px 5px 5px silver;
   border: solid thick rgba(240, 210, 113, 0.9);
-  background-image: url("../../images/paris.jpg");
-  background-size: cover;
+  background-image: url("../../images/mapa.jpg");
+  background-size: contain;
   background-position: center;
 }
 

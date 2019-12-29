@@ -32,7 +32,7 @@ class App extends React.Component {
         }
     }
 
-    // RETRIEVE JWT 
+    // RETRIEVE && DECODE - JWT 
     jwt = () => {
         const token = localStorage.getItem('token');
         return token; 
@@ -149,7 +149,7 @@ class App extends React.Component {
 
         // ON MOUNT CHECK IF JWT, TO RENDER PAGE
         const token = localStorage.getItem('token');
-        // if(token) { this.setState({ logged: true }) }
+        if(token) { this.setState({ logged: true }) }
     }
 
 
