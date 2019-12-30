@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Video from 'twilio-video';
 import axios from 'axios';
+import '../styles/chat.css'; 
 
 // import RaisedButton from 'material-ui/RaisedButton';
 // import TextField from 'material-ui/TextField';
@@ -19,12 +20,12 @@ export default class VideoComponent extends Component {
           hasJoinedRoom: false,
           activeRoom: null // Track the current active room
        };
-       this.joinRoom = this.joinRoom.bind(this);
+        this.joinRoom = this.joinRoom.bind(this);
         this.handleRoomNameChange = this.handleRoomNameChange.bind(this);
         this.leaveRoom = this.leaveRoom.bind(this);
         this.detachTracks = this.detachTracks.bind(this);
         this.detachParticipantTracks =this.detachParticipantTracks.bind(this);
-       this.roomJoined = this.roomJoined.bind(this);
+        this.roomJoined = this.roomJoined.bind(this);
      }
 
     componentDidMount() {
@@ -94,7 +95,6 @@ export default class VideoComponent extends Component {
             });
          }
 
-
         roomJoined(room) {
             // Called when a participant joins a room
             console.log("Joined as '" + this.state.identity + "'");
@@ -138,7 +138,6 @@ export default class VideoComponent extends Component {
         
             // Detach all participant’s track when they leave a room.
             room.on('participantDisconnected', participant => {
-                console.log("Participant '" + participant.identity + "' left the room");
                 this.detachParticipantTracks(participant);
             });
 
@@ -177,37 +176,37 @@ export default class VideoComponent extends Component {
       
 
       render() {
+
+        let chat_page = <div className="chat_content">
+                          <h1>Chat</h1>
+                          <img className = 'chat_items' src = {require('../images/doctor-icon.png')} alt = '' />
+                        </div>; 
         /* 
          Controls showing of the local track
          Only show video track after user has joined a room else show nothing 
         */
         let showLocalTrack = this.state.localMediaAvailable ? (
-          <div className="flex-item"><div ref="localMedia" /> </div>) : '';   
+          <div ref="localMedia" id = 'video' className="chat_content" /> ) : chat_page;   
         /*
          Controls showing of ‘Join Room’ or ‘Leave Room’ button.  
          Hide 'Join Room' button if user has already joined a room otherwise 
          show `Leave Room` button.
         */
         let joinOrLeaveRoomButton = this.state.hasJoinedRoom ? (
-        <input type = 'submit' value="Leave Room" onClick={this.leaveRoom}  />) : (
-        <input type = 'submit' value="Join Room"  onClick={this.joinRoom} />
+        <input type = 'submit' className = 'chat_btn btn btn-primary' value="Leave Room" onClick={this.leaveRoom}  />) : (
+        <input type = 'submit' className = 'chat_btn btn btn-primary' value="Join Room"  onClick={this.joinRoom} />
         );
+
         return (
-            <div className="flex-container">
-                {showLocalTrack} {/* Show local track if available */}
-                <div className="flex-item">
-                {/* 
-            The following text field is used to enter a room name. It calls  `handleRoomNameChange` method when the text changes which sets the `roomName` variable initialized in the state.
-                */}
-                <input type = 'text' placeHolder="Room Name" onChange={this.handleRoomNameChange} 
-                errorText = {this.state.roomNameErr ? 'Room Name is required' : undefined} 
-                /><br />
-                {joinOrLeaveRoomButton}  {/* Show either ‘Leave Room’ or ‘Join Room’ button */}
+            <div className="chat_parent_container">
+                <div className = 'chat'>
+                    {showLocalTrack}
+                    {!this.state.hasJoinedRoom && <input className = 'chat_items' type = 'text' placeHolder="Your Chat Key" onChange={this.handleRoomNameChange} 
+                    errorText = {this.state.roomNameErr ? 'Room Name is required' : undefined} 
+                    /> 
+                    }
+                    {joinOrLeaveRoomButton}  
                 </div>
-                {/* 
-            The following div element shows all remote media (other                             participant’s tracks) 
-                */}
-                <div ref="remoteMedia" id="remote-media" />
             </div>
         );
       }
