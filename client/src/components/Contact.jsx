@@ -36,16 +36,16 @@ class Contact extends Component{
                     <form>
                         <div className = 'form-group'>
                             <input type = 'text' name = 'name' onChange = {this.form_change}
-                            className = 'form-control' value = {this.state.name} placeHolder = 'name' />
+                            className = 'form-control' value = {this.state.name} placeHolder = 'name' required/>
                         </div>
                         <div className = 'form-group'>
                             <input type = 'text' name = 'subject' onChange = {this.form_change}
-                            className = 'form-control' value = {this.state.subject} placeHolder = 'subject' />
+                            className = 'form-control' value = {this.state.subject} placeHolder = 'subject' required/>
                         </div>
                         <div className = 'form-group'>
                             <textarea type = 'text' name = 'message' onChange = {this.form_change}
                             className = 'form-control' value = {this.state.message} placeHolder = 'message...'
-                            ></textarea>
+                            required></textarea>
                         </div>
                         <input type = 'submit' className = 'btn btn-block btn-primary' onClick = {this.form_submit} />
                     </form>
