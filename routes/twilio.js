@@ -3,10 +3,11 @@ var AccessToken = require('twilio').jwt.AccessToken;
 var VideoGrant = AccessToken.VideoGrant;
 const express = require('express');
 const router = express.Router(); 
+var faker = require('faker');
 
 // Endpoint to generate access token
 router.get('/', (req, res) => {
-   var identity = "dpg1919"; // change to req.query.name later
+   var identity = faker.name.findName(); // change to req.query.name later
 
    // Create an access token which we will sign and return to the client,
    // containing the grant we just created
@@ -28,6 +29,7 @@ router.get('/', (req, res) => {
        identity: identity,
        token: token.toJwt()
    });
+//    res.send(identity); 
 });
 
 module.exports = router; 

@@ -21,7 +21,6 @@ class Jumbotron extends React.Component{
         jumbotron_1.classList.add('fade_in'); 
 
            this.interval = setInterval(() => {
-            console.log(count); 
             jumbotron_1.classList.toggle('toggle_opacity'); // DIV 1 - FADE OUT
             jumbotron_2.classList.add('fade_in'); // DIV 2 - FADE IN 
             count++;

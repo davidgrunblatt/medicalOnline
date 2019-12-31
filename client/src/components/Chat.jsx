@@ -26,6 +26,7 @@ export default class VideoComponent extends Component {
         this.detachTracks = this.detachTracks.bind(this);
         this.detachParticipantTracks =this.detachParticipantTracks.bind(this);
         this.roomJoined = this.roomJoined.bind(this);
+        this.getTracks = this.getTracks.bind(this); 
      }
 
     componentDidMount() {
@@ -84,10 +85,11 @@ export default class VideoComponent extends Component {
           // Attach the Participant's Tracks to the DOM.
         attachParticipantTracks(participant, container, isLocal) {
             var tracks = this.getTracks(participant);
+            console.log('attaching participant tracks'); 
             this.attachTracks(tracks, container, isLocal);
          }
          
-        getTracks = (participant) => {
+        getTracks(participant) {
             return Array.from(participant.tracks.values()).filter(function (publication) {
                return publication.track;
             }).map(function (publication) {
@@ -103,6 +105,7 @@ export default class VideoComponent extends Component {
               localMediaAvailable: true,
               hasJoinedRoom: true  // Removes ‘Join Room’ button and shows ‘Leave Room’
             });
+            
           
             // Attach LocalParticipant's tracks to the DOM, if not already attached.
             var previewContainer = this.refs.localMedia;
@@ -116,11 +119,33 @@ export default class VideoComponent extends Component {
                 console.log("Already in Room: '" + participant.identity + "'");
                 var previewContainer = this.refs.remoteMedia;
                 this.attachParticipantTracks(participant, previewContainer);
+
+                participant.tracks.forEach(publication => {
+                  if (publication.isSubscribed) {
+                    const track = publication.track;
+                    document.getElementById('remote-media-div').appendChild(track.attach());
+                  }
+                });
+              
+                participant.on('trackSubscribed', track => {
+                  document.getElementById('remote-media-div').appendChild(track.attach());
+                });
             });
         
             // Participant joining room
             room.on('participantConnected', participant => {
                 console.log("Joining: '" + participant.identity + "'");
+
+                participant.tracks.forEach(publication => {
+                  if (publication.isSubscribed) {
+                    const track = publication.track;
+                    document.getElementById('remote-media-div').appendChild(track.attach());
+                  }
+                });
+              
+                participant.on('trackSubscribed', track => {
+                  document.getElementById('remote-media-div').appendChild(track.attach());
+                });
             });
         
             // Attach participant’s tracks to DOM when they add a track
@@ -138,6 +163,7 @@ export default class VideoComponent extends Component {
         
             // Detach all participant’s track when they leave a room.
             room.on('participantDisconnected', participant => {
+                console.log("Participant '" + participant.identity + "' left the room");
                 this.detachParticipantTracks(participant);
             });
 
@@ -152,7 +178,7 @@ export default class VideoComponent extends Component {
                 this.state.activeRoom = null;
                 this.setState({ hasJoinedRoom: false, localMediaAvailable: false });
               });
-          }
+        }
 
           // Leaving a room 
           leaveRoom(){
@@ -186,7 +212,10 @@ export default class VideoComponent extends Component {
          Only show video track after user has joined a room else show nothing 
         */
         let showLocalTrack = this.state.localMediaAvailable ? (
-          <div ref="localMedia" id = 'video' className="chat_content" /> ) : chat_page;   
+          <div>
+            <div ref="localMedia" id = 'video' className="chat_content" />
+            <div id = 'remote-media-div' />
+          </div> ) : chat_page;   
         /*
          Controls showing of ‘Join Room’ or ‘Leave Room’ button.  
          Hide 'Join Room' button if user has already joined a room otherwise 
