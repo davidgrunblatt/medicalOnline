@@ -165,9 +165,10 @@ export default class VideoComponent extends Component {
             room.on('participantDisconnected', participant => {
                 console.log("Participant '" + participant.identity + "' left the room");
                 this.detachParticipantTracks(participant);
+                document.getElementById('remote-media-div').style.display = 'none';
             });
 
-            room.on('disconnected', () => {
+            room.on('disconnected', (room) => {
                 if (this.state.previewTracks) {
                   this.state.previewTracks.forEach(track => {
                     track.stop();
