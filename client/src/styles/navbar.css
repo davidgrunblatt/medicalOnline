@@ -1,0 +1,34 @@
+
+nav {
+    margin-top: 10px;
+}
+
+nav a{
+    display: block;
+    margin-bottom: 10px;
+    transition-property: padding;
+    transition-duration: 1s;
+}
+
+nav p {
+    color: rgb(245, 176, 97);
+}
+
+.nav_item {
+    display:flex;
+    justify-content: space-between;
+}
+.nav_item img{
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+}
+
+nav a:hover {
+    padding: 10px;
+    cursor: pointer;
+}
+
+nav a:active {
+    padding: 10px;
+}

@@ -49,22 +49,6 @@ $boxShadow: 0px 2px 1px silver;
     }
 }
 
-
-/* SLIDE IN EFFECT ON LOAD */ 
-.slide_transition {
-    position: relative;
-    transition-property: right;
-    transition-duration: 2s;
-}
-
-.slide_out {
-    right: 2000px;
-}
-
-.slide_in {
-    right: 0px;
-}
-
 @media screen and (max-width: 767px){
     .jumbotron_parent div {
         width: 100%;

@@ -31,6 +31,27 @@ body {
     opacity: 0; 
 }
 
+/* SLIDE IN EFFECT ON LOAD */ 
+.slide_transition {
+    position: relative;
+    transition-property: right, opacity;
+    transition-duration: 2s;
+}
+
+.slide_out {
+    right: 2000px;
+}
+
+.slide_in {
+    right: 0px;
+}
+
+/* PAGE TRANSITIONS */ 
+
+.page_opacity {
+    opacity: 0;
+}
+
 
 @media screen and (min-width: 1440px){
    /* #parent_container {

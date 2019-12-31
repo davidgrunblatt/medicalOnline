@@ -22,8 +22,6 @@
     background-size: cover;
     box-shadow: 10px 5px 5px silver;
     border: solid thick rgba(255, 206, 44, 0.9);
-
-    // position: absolute;
     width: 100%;
 }
 
@@ -50,6 +48,7 @@
     span {
         color: rgb(180, 23, 23);
     }
+    
     form {
         padding: 20px;
         flex:1;

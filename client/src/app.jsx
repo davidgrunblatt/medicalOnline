@@ -6,7 +6,7 @@ import axios from 'axios';
 import jwtDecode from 'jwt-decode'; 
 // COMPONENTS
 import Jumbotron from './components/Jumbotron'; 
-import Navbar from './components/Navbar'; 
+import Navbar from './components/sidebar'; 
 import Login from './components/Login'; 
 import Dashboard from './components/Dashboard'; 
 import Chat from './components/Chat'; 
@@ -176,13 +176,13 @@ class App extends React.Component {
                     <Navbar /> 
                 </header>
                 <main>
-                    <Jumbotron />
+                    { !this.state.logged &&  <Jumbotron /> }
                     { this.state.logged ? <Dashboard data = {user_data} submit = {this.update_submit}
                     change = {this.update_change} file = {file} /> : <Login login = {login_props} /> }
+                    { this.state.logged && <Chat /> }
                 </main>
                 <footer>
-                    <Contact /> 
-                    <Chat /> 
+                   <Contact /> 
                 </footer>
             </div>
          );

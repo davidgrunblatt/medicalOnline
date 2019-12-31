@@ -58,7 +58,7 @@ class Jumbotron extends React.Component{
     }
     render(){
         return(
-            <div>
+            <div className = 'page_transition'>
                 <main className = 'jumbotron_parent slide_transition slide_out'>
                     <div className = 'jumbo_div fade_transition'>
                         <img src = {this.state.image1} alt = '' />
