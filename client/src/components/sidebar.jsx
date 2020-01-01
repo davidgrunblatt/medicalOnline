@@ -27,13 +27,11 @@ class Navbar extends Component {
                         <p id = 'home'>Home</p>
                         <img src = {require('../images/next.png')} alt = ''/>
                     </a>
-                    <Scrollchor to="#dashboard_parent_container" animate={{offset: -100, duration: 300}}>
-                        <a className = 'nav_item' onClick = {this.props.page_handler} >
-                            <img src = {require('../images/login.png')} alt = ''/>
-                            <p id = 'login'>{this.props.logged ? "Dashboard" : "Login"}</p>
-                            <img src = {require('../images/next.png')} alt = ''/>
-                        </a>
-                    </Scrollchor>
+                    <a className = 'nav_item' onClick = {this.props.page_handler} >
+                        <img src = {require('../images/login.png')} alt = ''/>
+                        <p id = 'login'>{this.props.logged ? "Dashboard" : "Login"}</p>
+                        <img src = {require('../images/next.png')} alt = ''/>
+                    </a>
                     {this.props.logged && <a className = 'nav_item' onClick = {this.props.page_handler} >
                         <img src = {require('../images/doctor-icon.png')} alt = ''/>
                         <p id = 'consultation'>Consultation</p>
