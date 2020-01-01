@@ -171,7 +171,7 @@ export default class VideoComponent extends Component {
             room.on('disconnected', (room) => {
                 if (this.state.previewTracks) {
                   this.state.previewTracks.forEach(track => {
-                    track.stop();
+                    track.stop(); 
                   });
                 }
                 this.detachParticipantTracks(room.localParticipant);
@@ -199,6 +199,14 @@ export default class VideoComponent extends Component {
                  htmlElement.remove();
                }
             }
+         }
+
+         componentDidMount(){
+           const chat = document.querySelector('.chat_parent_container');
+           this.slide = setTimeout(() => {
+            chat.classList.remove('slide_out');
+            chat.classList.add('slide_in'); 
+           }, 1000); 
          }
       
 
@@ -228,7 +236,7 @@ export default class VideoComponent extends Component {
         );
 
         return (
-            <div className="chat_parent_container">
+            <div className="chat_parent_container slide_transition slide_out">
                 <div className = 'chat'>
                     {showLocalTrack}
                     {!this.state.hasJoinedRoom && <input className = 'chat_items' type = 'text' placeHolder="Your Chat Key" onChange={this.handleRoomNameChange} 

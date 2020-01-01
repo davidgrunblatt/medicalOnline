@@ -17,7 +17,7 @@ class App extends React.Component {
     constructor(props){
         super(props);
         this.state = { 
-            page: '',
+            page: 'home',
             username: '',
             password: '',
             logged: false,
@@ -29,6 +29,19 @@ class App extends React.Component {
                 chatKey: ''
             },
             file: ''
+        }
+    }
+
+    page_handler = (e) => {
+        if(e.target.id === 'home'){
+            this.setState({ page: 'home' });
+            console.log(e.target.id); 
+        } else if (e.target.id === 'login'){
+            console.log(e.target.id); 
+            this.setState({ page: 'dashboard' })
+        } else if (e.target.id === 'consultation'){
+            console.log(e.target.id); 
+            this.setState({ page: 'consultation' }); 
         }
     }
 
@@ -169,23 +182,56 @@ class App extends React.Component {
             file_submit: this.file_submit
         }
 
-        return ( 
-            <div id = 'parent_container' className = 'fade_transition'>
-                <header className = 'header'>
-                    <img src = {require('./images/logo.png')} alt = 'brand logo' />
-                    <Navbar /> 
-                </header>
-                <main>
-                    { !this.state.logged &&  <Jumbotron /> }
-                    { this.state.logged ? <Dashboard data = {user_data} submit = {this.update_submit}
-                    change = {this.update_change} file = {file} /> : <Login login = {login_props} /> }
-                    { this.state.logged && <Chat /> }
-                </main>
-                <footer>
-                   <Contact /> 
-                </footer>
-            </div>
-         );
+        if(this.state.page === 'dashboard'){
+            return ( 
+                <div id = 'parent_container' className = 'fade_transition'>
+                    <header className = 'header'>
+                        <img src = {require('./images/logo.png')} alt = 'brand logo' />
+                        <Navbar page_handler = {this.page_handler} logged = {this.state.logged} /> 
+                    </header>
+                    <main>
+                        { this.state.logged ? <Dashboard data = {user_data} submit = {this.update_submit}
+                        change = {this.update_change} file = {file} /> : <Login login = {login_props} /> }
+                    </main>
+                    <footer>
+                       <Contact /> 
+                    </footer>
+                </div>
+             );
+        } else if (this.state.page === 'home'){
+            return ( 
+                <div id = 'parent_container' className = 'fade_transition'>
+                    <header className = 'header'>
+                        <img src = {require('./images/logo.png')} alt = 'brand logo' />
+                        <Navbar  page_handler = {this.page_handler} logged = {this.state.logged} /> 
+                    </header>
+                    <main>
+                        <Jumbotron /> 
+                    </main>
+                    <footer>
+                       <Contact /> 
+                    </footer>
+                </div>
+            );
+        }
+        else if (this.state.page === 'consultation'){
+            return ( 
+                <div id = 'parent_container' className = 'fade_transition'>
+                    <header className = 'header'>
+                        <img src = {require('./images/logo.png')} alt = 'brand logo' />
+                        <Navbar  page_handler = {this.page_handler} logged = {this.state.logged} /> 
+                    </header>
+                    <main>
+                        <Chat />
+                        { this.state.logged ? <Dashboard data = {user_data} submit = {this.update_submit}
+                        change = {this.update_change} file = {file} /> : <Login login = {login_props} /> }
+                    </main>
+                    <footer>
+                       <Contact /> 
+                    </footer>
+                </div>
+            );
+        }
     }
 }
  

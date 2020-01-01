@@ -34,7 +34,7 @@ body {
 /* SLIDE IN EFFECT ON LOAD */ 
 .slide_transition {
     position: relative;
-    transition-property: right, opacity;
+    transition-property: right, left;
     transition-duration: 2s;
 }
 
@@ -44,6 +44,14 @@ body {
 
 .slide_in {
     right: 0px;
+}
+
+.slide_out_left {
+    left: 2000px;
+}
+
+.slide_in_right {
+    left: 0px;
 }
 
 /* PAGE TRANSITIONS */ 

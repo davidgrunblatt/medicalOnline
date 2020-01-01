@@ -16,9 +16,21 @@ class Dashboard extends React.Component {
         }
     }
 
+    componentDidMount(){
+        const dashboard = document.querySelector('#dashboard_parent_container');
+        this.slide = setTimeout(() => {
+            dashboard.classList.remove('slide_out_left');
+            dashboard.classList.add('slide_in_right'); 
+        }, 1000);
+    }
+
+    componentWillUnmount(){
+        clearTimeout(this.slide); 
+    }
+
     render() { 
         return ( 
-            <div id = 'dashboard_parent_container'>
+            <div id = 'dashboard_parent_container' className = 'slide_transition slide_out_left'>
                 <div id = 'dashboard_container'>
                  {/* <img src = {require('../images/logo.png')} alt = 'logo' /> */}
                     <section>

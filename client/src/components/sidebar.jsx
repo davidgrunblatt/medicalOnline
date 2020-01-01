@@ -22,34 +22,30 @@ class Navbar extends Component {
                 <img src = {require('../images/logo.png')} alt = 'logo' />
             </span>
             <nav>
-                <Scrollchor to="#login" animate={{offset: 0, duration: 300}} className="nav-link">
                     <a className = 'nav_item' onClick = {this.props.page_handler} >
                         <img src = {require('../images/home.png')} alt = ''/>
                         <p id = 'home'>Home</p>
                         <img src = {require('../images/next.png')} alt = ''/>
                     </a>
-                </Scrollchor>
-                <Scrollchor to="#login" animate={{offset: 400, duration: 300}} className="nav-link">
-                    <a className = 'nav_item' onClick = {this.props.page_handler} >
-                        <img src = {require('../images/login.png')} alt = ''/>
-                        <p id = 'login'>Login</p>
-                        <img src = {require('../images/next.png')} alt = ''/>
-                    </a>
-                </Scrollchor>
-                <Scrollchor to="#login" animate={{offset: 400, duration: 300}} className="nav-link">
-                    <a className = 'nav_item' onClick = {this.props.page_handler} >
+                    <Scrollchor to="#dashboard_parent_container" animate={{offset: -100, duration: 300}}>
+                        <a className = 'nav_item' onClick = {this.props.page_handler} >
+                            <img src = {require('../images/login.png')} alt = ''/>
+                            <p id = 'login'>{this.props.logged ? "Dashboard" : "Login"}</p>
+                            <img src = {require('../images/next.png')} alt = ''/>
+                        </a>
+                    </Scrollchor>
+                    {this.props.logged && <a className = 'nav_item' onClick = {this.props.page_handler} >
                         <img src = {require('../images/doctor-icon.png')} alt = ''/>
-                        <p>Consultation</p>
+                        <p id = 'consultation'>Consultation</p>
                         <img src = {require('../images/next.png')} alt = ''/>
-                    </a>
-                </Scrollchor>
-                <Scrollchor to="#login" animate={{offset: 1000, duration: 300}} className="nav-link">
-                    <a className = 'nav_item' onClick = {this.props.page_handler} >
-                        <img src = {require('../images/contact.png')} alt = ''/>
-                        <p>Contact</p>
-                        <img src = {require('../images/next.png')} alt = ''/>
-                    </a>
-                </Scrollchor>
+                    </a>}
+                    <Scrollchor to="#contact_container" animate={{offset: 12, duration: 300}}>
+                        <a className = 'nav_item' onClick = {this.props.page_handler} >
+                            <img src = {require('../images/contact.png')} alt = ''/>
+                            <p id = 'contact'>Contact</p>
+                            <img src = {require('../images/next.png')} alt = ''/>
+                        </a>
+                    </Scrollchor>
             </nav> 
         </div>; 
 
@@ -58,7 +54,8 @@ class Navbar extends Component {
             width: 300, 
             marginTop: 90, 
             border: 'solid thick rgba(192, 192, 192, 0.589)',
-            padding: 10
+            padding: 10,
+            position: 'fixed'
     }
 
         return ( 
