@@ -55,6 +55,7 @@ class Jumbotron extends React.Component{
         console.log(`unmounting jumbotron and clearing ${this.interval}`); 
         clearInterval(this.interval);
         clearTimeout(this.timeOut); 
+        clearTimeout(this.timeout); 
     }
     render(){
         return(

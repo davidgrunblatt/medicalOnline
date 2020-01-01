@@ -34,7 +34,7 @@ class Dashboard extends React.Component {
                 <div id = 'dashboard_container'>
                  {/* <img src = {require('../images/logo.png')} alt = 'logo' /> */}
                     <section>
-                        <h4><span>Welcome back</span> {this.props.data.username} </h4>
+                        <h1><span>Your Dashboard</span> {this.props.data.username} </h1>
                         <h6>All the information you want to share with your Dr. is here. <br />
                             Feel free to update it at any time below. 
                         </h6>

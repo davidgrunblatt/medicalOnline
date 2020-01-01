@@ -3,10 +3,6 @@ import Video from 'twilio-video';
 import axios from 'axios';
 import '../styles/chat.css'; 
 
-// import RaisedButton from 'material-ui/RaisedButton';
-// import TextField from 'material-ui/TextField';
-// import { Card, CardHeader, CardText } from 'material-ui/Card';
-
 export default class VideoComponent extends Component {
     constructor(props) {
         super();
@@ -28,17 +24,6 @@ export default class VideoComponent extends Component {
         this.roomJoined = this.roomJoined.bind(this);
         this.getTracks = this.getTracks.bind(this); 
      }
-
-    componentDidMount() {
-        axios.get('/api/twilio').then(results => {
-          /*
-            Make an API call to get the token and identity(fake name) and  
-            update the corresponding state variables.
-          */
-          const { identity, token } = results.data;
-          this.setState({ identity, token });
-        });
-      }
 
     handleRoomNameChange(e) {
         /* Fetch room name from text field and update state */
@@ -201,13 +186,24 @@ export default class VideoComponent extends Component {
             }
          }
 
-         componentDidMount(){
+         slide_transition = () => {
            const chat = document.querySelector('.chat_parent_container');
            this.slide = setTimeout(() => {
             chat.classList.remove('slide_out');
             chat.classList.add('slide_in'); 
            }, 1000); 
          }
+
+        componentDidMount() {
+          axios.get('/api/twilio').then(results => {
+            const { identity, token } = results.data;
+            console.log('twilio results', results); 
+            this.setState({ identity, token });
+          })
+          .catch(ex => console.log('unable to get twilio key', ex)); 
+  
+          this.slide_transition(); 
+        }
       
 
       render() {
@@ -240,7 +236,7 @@ export default class VideoComponent extends Component {
                 <div className = 'chat'>
                     {showLocalTrack}
                     {!this.state.hasJoinedRoom && <input className = 'chat_items' type = 'text' placeHolder="Your Chat Key" onChange={this.handleRoomNameChange} 
-                    errorText = {this.state.roomNameErr ? 'Room Name is required' : undefined} 
+                    errortext = {this.state.roomNameErr ? 'Room Name is required' : undefined} 
                     /> 
                     }
                     {joinOrLeaveRoomButton}  

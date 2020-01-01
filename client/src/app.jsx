@@ -19,6 +19,7 @@ class App extends React.Component {
         this.state = { 
             page: 'home',
             username: '',
+            email: '',
             password: '',
             logged: false,
             userData: {
@@ -32,6 +33,7 @@ class App extends React.Component {
         }
     }
 
+    // PAGE CHANGER 
     page_handler = (e) => {
         if(e.target.id === 'home'){
             this.setState({ page: 'home' });
@@ -63,11 +65,12 @@ class App extends React.Component {
         }, 2000);
     }
 
-    // ON CHANGE LOGIN FORM HANDLER 
+    // LOGIN - FORM HANDLER
     login_change = (e) => {
         this.setState({ [e.target.name]: e.target.value }); 
     }
-    // ON CHANGE FOR EDIT FORM 
+
+    // EDIT FORM - HANDLER
     update_change = (e) => {
         // create a dummy object to update properties then this.setState replacing old userData object with dummy. 
         const dummy = this.state.userData; 
@@ -105,7 +108,7 @@ class App extends React.Component {
         .catch( ex => console.log('unable to send file', ex) ); 
     }
 
-    // UPDATE ACCOUNT METHOD
+    // UPDATE ACCOUNT AXIOS 
     update_submit = async (e) => {
         e.preventDefault();
         // JWT DECODED TO RETRIEVE USER_ID FROM JWT PAYLOAD AND USE ID TO MAKE MONGO UPDATE 
@@ -163,7 +166,7 @@ class App extends React.Component {
 
         // ON MOUNT CHECK IF JWT, TO RENDER PAGE
         const token = localStorage.getItem('token');
-        // if(token) { this.setState({ logged: true }) }
+        if(token) { this.setState({ logged: true }) }
     }
 
 
