@@ -166,7 +166,7 @@ class App extends React.Component {
 
         // ON MOUNT CHECK IF JWT, TO RENDER PAGE
         const token = localStorage.getItem('token');
-        if(token) { this.setState({ logged: true }) }
+        // if(token) { this.setState({ logged: true }) }
     }
 
 
