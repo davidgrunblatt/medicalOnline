@@ -6,6 +6,7 @@ const fileUpload = require('express-fileupload');
 const path = require('path'); 
 const Patient = require('../models/Patients'); 
 const nodemailer = require('nodemailer'); 
+const jwt = require('jsonwebtoken'); 
 
 // fileupload package middleware to parse file
 router.use(fileUpload());
@@ -16,20 +17,19 @@ router.post('/', auth, async(req, res) => {
   }
 
   // DECODED JWT PAYLOAD 
-  // const decoded = await req.patient; 
-  const decoded = '5e052c61569a3f6beb2b80b0'; // for testing purposes, replace with ^^ later. 
+  const decoded = await jwt.verify(req.header('x-auth-token'), process.env.jwtPrivateKey);
 
   // FIND ACCOUNT WITH USER ID FOUND IN REQ.PATIENT. req.patient comes from auth middleware .verify()
   const account = await Patient
-  .findById({ _id: decoded }); 
+  .findById({ _id: decoded.user_id }); 
 
   // THE FILE FROM REQ
   let file = req.files.file;
 
   // SAVE AS NAME
-  let save_as = req.body.save_as; 
+  let save_as = "file_" + Math.floor(Math.random() * 100); 
   // PATH TO IMAGE 
-  let location = './images/' + decoded + "_" + save_as + path.extname(file.name); 
+  let location = './images/' + decoded.user_id + "_" + save_as + path.extname(file.name); 
 
   // OBJECT WITH FILE INFO
   const file_object = {

@@ -44,6 +44,11 @@ class Navbar extends Component {
                             <img src = {require('../images/next.png')} alt = ''/>
                         </a>
                     </Scrollchor>
+                    {this.props.logged && <a className = 'nav_item' onClick = {this.props.logout} >
+                        <img src = {require('../images/logout.png')} alt = ''/>
+                        <p>Logout</p>
+                        <img src = {require('../images/next.png')} alt = ''/>
+                    </a>}
             </nav> 
         </div>; 
 

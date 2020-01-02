@@ -6,7 +6,7 @@ const port = process.env.PORT || 3001;
 const mongoose = require('./startup/mongoose');
 
 // IF JWT PRIVATE KEY IS NOT INITIALIZED THROW ERROR 
-if(!process.env.jwtPrivateKey) throw new Error((err) => console.log('JWT Key is NOT Defined!')); 
+if(!process.env.jwtPrivateKey) process.exit(1); 
 
 // STARTUP
 require('./startup/routes')(app); // ROUTES 

@@ -3,7 +3,7 @@
   background-image: url("../../images/madrid.jpg");
   background-position: center;
   background-size: cover;
-  height: 550px;
+  min-height: 550px;
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;

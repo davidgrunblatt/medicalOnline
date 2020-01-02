@@ -27,6 +27,7 @@ nav p {
 nav a:hover {
     padding: 10px;
     cursor: pointer;
+    text-decoration: none;
 }
 
 nav a:active {

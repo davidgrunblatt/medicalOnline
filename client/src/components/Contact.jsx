@@ -7,7 +7,8 @@ class Contact extends Component{
     state = {
         name: '',
         subject: '',
-        message: ''
+        message: '',
+        sent: false
     }
     form_change = (e) => {
         this.setState({
@@ -24,6 +25,16 @@ class Contact extends Component{
         })
         .then( data => {
             console.log('Email has been sent!', data);
+            this.setState({ sent: true }); 
+
+            setTimeout(() => {
+                this.setState({
+                    sent: false,
+                    name: '',
+                    subject: '',
+                    message: ''
+                })
+            }, 3000);
         } )
         .catch( ex => console.log('Unable to send email:', ex) ); 
     }
@@ -47,7 +58,9 @@ class Contact extends Component{
                             className = 'form-control' value = {this.state.message} placeHolder = 'message...'
                             required></textarea>
                         </div>
-                        <input type = 'submit' className = 'btn btn-block btn-primary' onClick = {this.form_submit} />
+                        <input type = 'submit' className = 'btn btn-block btn-primary' 
+                        onClick = {this.form_submit} value = {this.state.sent ? "Message Sent!" : "Send Message" }
+                        />
                     </form>
                 </div>
             </div>

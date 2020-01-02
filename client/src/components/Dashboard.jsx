@@ -32,7 +32,6 @@ class Dashboard extends React.Component {
         return ( 
             <div id = 'dashboard_parent_container' className = 'slide_transition slide_out_left'>
                 <div id = 'dashboard_container'>
-                 {/* <img src = {require('../images/logo.png')} alt = 'logo' /> */}
                     <section>
                         <h1><span>Your Dashboard</span> {this.props.data.username} </h1>
                         <h6>All the information you want to share with your Dr. is here. <br />
@@ -68,7 +67,7 @@ class Dashboard extends React.Component {
                                 />
                             </div>
                             <input type = 'submit' onClick = {this.props.submit} className = 'btn btn-block'
-                            value = 'Save Changes' /> 
+                            value = {!this.props.file.changes_saved ? "Save Changes" : "Saved!"} /> 
                         </form>
                     </section>}
 
@@ -80,13 +79,12 @@ class Dashboard extends React.Component {
                         </h6>
                         <form>
                             <div className = 'form-group'>
-                                <input type = 'text' placeholder = 'file name' className = 'form-control mb-2' />
                                 <input type = 'file' name = 'file' onChange = {this.props.file.file_change}
                                 className = 'btn-primary btn-block'
                                 />
                             </div>
                             <input type = 'submit' className = 'btn btn-primary btn-block' onClick = {this.props.file.file_submit}
-                            value = 'Send File' /> 
+                            value = {!this.props.file.file_saved ? "Send File" : "Sent!"} /> 
                         </form>
                     </section>
 
