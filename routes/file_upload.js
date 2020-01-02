@@ -20,9 +20,8 @@ router.post('/', auth, async(req, res) => {
   const decoded = await jwt.verify(req.header('x-auth-token'), process.env.jwtPrivateKey);
 
   // FIND ACCOUNT WITH USER ID FOUND IN REQ.PATIENT. req.patient comes from auth middleware .verify()
-  const account = await Patient
-  .findById({ _id: decoded.user_id })
-  .catch(ex => console.log('Unable to retrieve user data to send file', ex)); 
+  const account = Patient
+  .findById({ _id: decoded.user_id }); 
 
   // THE FILE FROM REQ
   let file = req.files.file;
@@ -42,7 +41,7 @@ router.post('/', auth, async(req, res) => {
 
    try {
      // ACCOUNT .UPDATE $PUSH DOCUMENT TO ARRAY 
-    await account.update({
+    await account.updateOne({
           $push: { documents: file_object }
       });
 
@@ -53,38 +52,42 @@ router.post('/', auth, async(req, res) => {
 
         // res.send(account);
       });
-
-    // create reusable transporter object using the default SMTP transport
-    let transporter = await nodemailer.createTransport({
-      host: "smtp.gmail.com",
-      port: 587,
-      secure: false, // true for 465, false for other ports
-      auth: {
-          user: "dpg1919@gmail.com", // generated ethereal user
-          pass: "claptoncocaine131" // generated ethereal password
-      }
-      }); 
-  
-      // send mail with defined transport object
-      let info = await transporter.sendMail({
-      from: file_object.username, // sender address
-      to: "dpg1919@gmail.com", // list of receivers
-      subject: save_as, // Subject line
-      text: '', // plain text body,
-      attachments: {
-        filename: req.body.save_as,
-        path: location
-      }, 
-      html: `<p>name: ${file_object.username} <br/>
-                message: ${save_as}
-            </p>` // html body
-      });
    }
 
    catch(ex) {
      console.log(ex); 
    }
 
+   try {
+     // create reusable transporter object using the default SMTP transport
+      let transporter = await nodemailer.createTransport({
+        host: "smtp.gmail.com",
+        port: 587,
+        secure: false, // true for 465, false for other ports
+        auth: {
+            user: "dpg1919@gmail.com", // generated ethereal user
+            pass: "claptoncocaine131" // generated ethereal password
+        }
+        }); 
+    
+        // send mail with defined transport object
+        let info = await transporter.sendMail({
+        from: file_object.username, // sender address
+        to: "dpg1919@gmail.com", // list of receivers
+        subject: save_as, // Subject line
+        text: '', // plain text body,
+        attachments: {
+          filename: req.body.save_as,
+          path: location
+        }, 
+        html: `<p>name: ${file_object.username} <br/>
+                  message: ${save_as}
+              </p>` // html body
+        });
+   }
+   catch(ex){
+     console.log('Unable to send file with Nodemailer', ex); 
+   }
 
   res.send('Successfully saved file!');
 });
