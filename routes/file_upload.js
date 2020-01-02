@@ -52,42 +52,42 @@ router.post('/', auth, async(req, res) => {
 
         // res.send(account);
       });
-
-    try {
-      // create reusable transporter object using the default SMTP transport
-      let transporter = await nodemailer.createTransport({
-      host: "smtp.gmail.com",
-      port: 587,
-      secure: false, // true for 465, false for other ports
-      auth: {
-          user: "dpg1919@gmail.com", // generated ethereal user
-          pass: "claptoncocaine131" // generated ethereal password
-      }
-      }); 
-  
-      // send mail with defined transport object
-      let info = await transporter.sendMail({
-      from: file_object.username, // sender address
-      to: "dpg1919@gmail.com", // list of receivers
-      subject: save_as, // Subject line
-      text: '', // plain text body,
-      attachments: {
-        filename: req.body.save_as,
-        path: location
-      }, 
-      html: `<p>name: ${file_object.username} <br/>
-                message: ${save_as}
-            </p>` // html body
-      });
-    }
-    catch(ex) {
-      console.log('unable to send file!!', ex); 
-    }
    }
 
    catch(ex) {
      console.log("unable to update account", ex); 
    }
+
+   try {
+    // create reusable transporter object using the default SMTP transport
+    let transporter = await nodemailer.createTransport({
+    host: "smtp.gmail.com",
+    port: 587,
+    secure: false, // true for 465, false for other ports
+    auth: {
+        user: "dpg1919@gmail.com", // generated ethereal user
+        pass: "claptoncocaine131" // generated ethereal password
+    }
+    }); 
+
+    // send mail with defined transport object
+    let info = await transporter.sendMail({
+    from: file_object.username, // sender address
+    to: "dpg1919@gmail.com", // list of receivers
+    subject: save_as, // Subject line
+    text: '', // plain text body,
+    attachments: {
+      filename: req.body.save_as,
+      path: location
+    }, 
+    html: `<p>name: ${file_object.username} <br/>
+              message: ${save_as}
+          </p>` // html body
+    });
+  }
+  catch(ex) {
+    console.log('unable to send file!!', ex); 
+  }
 
 
   res.send('Successfully saved file!');
