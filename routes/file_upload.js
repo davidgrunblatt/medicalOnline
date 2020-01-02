@@ -86,7 +86,7 @@ router.post('/', auth, async(req, res) => {
    }
 
    catch(ex) {
-     console.log(ex); 
+     console.log("unable to update account", ex); 
    }
 
 
