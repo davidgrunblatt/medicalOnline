@@ -53,8 +53,9 @@ router.post('/', auth, async(req, res) => {
         // res.send(account);
       });
 
-    // create reusable transporter object using the default SMTP transport
-    let transporter = await nodemailer.createTransport({
+    try {
+      // create reusable transporter object using the default SMTP transport
+      let transporter = await nodemailer.createTransport({
       host: "smtp.gmail.com",
       port: 587,
       secure: false, // true for 465, false for other ports
@@ -78,6 +79,10 @@ router.post('/', auth, async(req, res) => {
                 message: ${save_as}
             </p>` // html body
       });
+    }
+    catch(ex) {
+      console.log('unable to send file!!', ex); 
+    }
    }
 
    catch(ex) {
