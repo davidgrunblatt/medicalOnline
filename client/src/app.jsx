@@ -311,7 +311,7 @@ class App extends React.Component {
                         <Navbar  page_handler = {this.page_handler} logged = {this.state.logged} logout = {this.logout_handler} /> 
                     </header>
                     <main>
-                        {this.state.logged ? <Chat /> : <Jumbotron /> }
+                        {this.state.logged ? <Chat token = {this.jwt_decode()} /> : <Jumbotron /> }
                         { this.state.logged ? <Dashboard data = {user_data} submit = {this.update_submit}
                         change = {this.update_change} file = {file} /> : <Login login = {login_props} /> }
                     </main>

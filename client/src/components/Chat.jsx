@@ -200,11 +200,10 @@ export default class VideoComponent extends Component {
          }
 
         async componentDidMount() {
-          const decoded_token = jwtDecode(localStorage.getItem('token'));
-          
+  
          await axios.get('/api/twilio', {
            params: {
-             username: decoded_token.username
+             username: this.props.token.username
            }
          })
           .then(results => {
