@@ -127,8 +127,12 @@ export default class VideoComponent extends Component {
               
                 participant.on('trackSubscribed', track => {
                   document.getElementById('remote-media-div').appendChild(track.attach());
-                  // console.log(document.getElementById('remote-media-div').children[document.getElementById('remote-media-div').children.length -1]); 
+
+                  // delete the old video from when u disconnected
                   document.querySelector('#remote-media-div').style.display = 'block';
+                  document.querySelector('#remote-media-div').onclick = ((e) => {
+                    e.target.style.display = 'none';
+                  })
                 });
             });
         
@@ -196,11 +200,11 @@ export default class VideoComponent extends Component {
          }
 
         async componentDidMount() {
-          const token = localStorage.getItem('token');
+          const decoded_token = jwtDecode(localStorage.getItem('token'));
           
          await axios.get('/api/twilio', {
-           headers: {
-             'x-auth-token':token
+           params: {
+             username: decoded_token.username
            }
          })
           .then(results => {

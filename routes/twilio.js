@@ -6,8 +6,8 @@ const router = express.Router();
 const auth = require('../middleware/auth'); 
 
 // Endpoint to generate access token
-router.get('/', auth, (req, res) => {
-   var identity = req.patient.username; // change to req.query.name later
+router.get('/', (req, res) => {
+   var identity = req.query.username; // change to req.query.name later
 
    // Create an access token which we will sign and return to the client,
    // containing the grant we just created
