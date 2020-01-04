@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Video from 'twilio-video';
 import axios from 'axios';
 import '../styles/chat.css'; 
+import jwtDecode from 'jwt-decode';
 
 export default class VideoComponent extends Component {
     constructor(props) {
@@ -14,7 +15,8 @@ export default class VideoComponent extends Component {
           previewTracks: null,
           localMediaAvailable: false, /* Represents the availability of a LocalAudioTrack(microphone) and a LocalVideoTrack(camera) */
           hasJoinedRoom: false,
-          activeRoom: null // Track the current active room
+          activeRoom: null, // Track the current active room,
+          stayOn: true
        };
         this.joinRoom = this.joinRoom.bind(this);
         this.handleRoomNameChange = this.handleRoomNameChange.bind(this);
@@ -50,12 +52,7 @@ export default class VideoComponent extends Component {
                  if (this.state.previewTracks) {
                      connectOptions.tracks = this.state.previewTracks;
                  }
-         
-        /* 
-         Connect to a room by providing the token and connection    
-         options that include the room name and tracks. We also show an 
-         alert if an error occurs while connecting to the room.    
-         */  
+        
          Video.connect(this.state.token, connectOptions).then(this.roomJoined, error => {
            alert('Could not connect to Twilio: ' + error.message);
          });
@@ -130,6 +127,8 @@ export default class VideoComponent extends Component {
               
                 participant.on('trackSubscribed', track => {
                   document.getElementById('remote-media-div').appendChild(track.attach());
+                  // console.log(document.getElementById('remote-media-div').children[document.getElementById('remote-media-div').children.length -1]); 
+                  document.querySelector('#remote-media-div').style.display = 'block';
                 });
             });
         
@@ -143,7 +142,9 @@ export default class VideoComponent extends Component {
             // Detach participant’s track from DOM when they remove a track.
             room.on('trackRemoved', (track, participant) => {
                 this.log(participant.identity + ' removed track: ' + track.kind);
-                this.detachTracks([track]);
+                var previewContainer = this.refs.remoteMedia;
+                this.detachTracks([track], previewContainer);
+                document.getElementById('remote-media-div').style.display = 'none';
             });
         
             // Detach all participant’s track when they leave a room.
@@ -194,8 +195,15 @@ export default class VideoComponent extends Component {
            }, 1000); 
          }
 
-        componentDidMount() {
-          axios.get('/api/twilio').then(results => {
+        async componentDidMount() {
+          const token = localStorage.getItem('token');
+          
+         await axios.get('/api/twilio', {
+           headers: {
+             'x-auth-token':token
+           }
+         })
+          .then(results => {
             const { identity, token } = results.data;
             console.log('twilio results', results); 
             this.setState({ identity, token });

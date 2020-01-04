@@ -3,11 +3,11 @@ var AccessToken = require('twilio').jwt.AccessToken;
 var VideoGrant = AccessToken.VideoGrant;
 const express = require('express');
 const router = express.Router(); 
-var faker = require('faker');
+const auth = require('../middleware/auth'); 
 
 // Endpoint to generate access token
-router.get('/', (req, res) => {
-   var identity = faker.name.findName(); // change to req.query.name later
+router.get('/', auth, (req, res) => {
+   var identity = req.patient.username; // change to req.query.name later
 
    // Create an access token which we will sign and return to the client,
    // containing the grant we just created

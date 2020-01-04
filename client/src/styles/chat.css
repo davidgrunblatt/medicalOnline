@@ -46,3 +46,6 @@ video, #remote_media_div {
     border: solid thick rgba(255, 255, 255, .5);
 }
 
+.twilio_display {
+    display: none;
+}
