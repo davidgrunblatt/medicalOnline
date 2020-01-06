@@ -29,7 +29,7 @@ router.get('/', async(req, res) => {
     }
 
     catch(ex){
-        console.log('ERROR LOGGING IN PATIENT: ', ex); 
+        console.log('SERVER Side error logging in: ', ex.details); 
         res.status(400).send('Unable To Login Patient...');
     }
 });

@@ -2,22 +2,45 @@
 import React, {Component} from 'react';
 import '../styles/contact.css'; 
 import axios from 'axios'; 
+import Joi from 'joi-browser'; 
 
 class Contact extends Component{
     state = {
         name: '',
         subject: '',
         message: '',
-        sent: false
+        sent: false,
+        error: ''
     }
     form_change = (e) => {
         this.setState({
             [e.target.name]: e.target.value
-        }, () => console.log(this.state)); 
+        }); 
+    }
+
+    joi_funk = (e) => {
+        e.preventDefault();
+        const message_schema = {
+            name: Joi.string().required(),
+            subject: Joi.string().required(),
+            message: Joi.string().min(10).required()
+        }
+        Joi.validate({
+            name: this.state.name,
+            subject: this.state.subject,
+            message: this.state.message
+        }, message_schema)
+        .then( () => this.form_submit() )
+        .catch( ex => {
+            console.log(ex.details[0].message);
+            const error = ex.details[0].message;
+            this.setState({ error }); 
+            alert(this.state.error); 
+        } ); 
     }
 
     form_submit = async (e) => {
-        e.preventDefault();
+        // e.preventDefault();
         await axios.post('/api/nodemailer', {
             name: this.state.name,
             subject: this.state.subject,
@@ -44,7 +67,7 @@ class Contact extends Component{
             <div id = 'contact_container'>
                 <div>
                     <h1>Contact the Clinic</h1>
-                    <form>
+                    <form onSubmit = {this.joi_funk}>
                         <div className = 'form-group'>
                             <input type = 'text' name = 'name' onChange = {this.form_change}
                             className = 'form-control' value = {this.state.name} placeHolder = 'name' required/>
@@ -59,7 +82,7 @@ class Contact extends Component{
                             required></textarea>
                         </div>
                         <input type = 'submit' className = 'btn btn-block btn-primary' 
-                        onClick = {this.form_submit} value = {this.state.sent ? "Message Sent!" : "Send Message" }
+                         value = {this.state.sent ? "Message Sent!" : "Send Message" }
                         />
                     </form>
                 </div>

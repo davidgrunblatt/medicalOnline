@@ -34,12 +34,7 @@ export default class VideoComponent extends Component {
         }
 
     joinRoom() {
-            /* 
-         Show an error message on room name text field if user tries         
-         joining a room without providing a room name. This is 
-         enabled by setting `roomNameErr` to true
-           */
-                if (!this.state.roomName.trim()) {
+          if (!this.state.roomName.trim()) {
                      this.setState({ roomNameErr: true });
                      return;
                  }
@@ -56,7 +51,7 @@ export default class VideoComponent extends Component {
          Video.connect(this.state.token, connectOptions).then(this.roomJoined, error => {
            alert('Could not connect to Twilio: ' + error.message);
          });
-         }
+    }
 
          attachTracks(tracks, container) {
             tracks.forEach(track => {
@@ -229,6 +224,10 @@ export default class VideoComponent extends Component {
         */
         let showLocalTrack = this.state.localMediaAvailable ? (
           <div>
+            <p className = 'm-2'>
+              You can chat with your physician below. To close any 
+              videos which are not working simply click on them.
+            </p>
             <div ref="localMedia" id = 'video' className="chat_content" />
             <div id = 'remote-media-div' />
           </div> ) : chat_page;   

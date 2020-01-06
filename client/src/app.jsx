@@ -4,6 +4,8 @@ import './styles/app/app.css';
 import 'bootstrap/dist/css/bootstrap.css'; 
 import axios from 'axios'; 
 import jwtDecode from 'jwt-decode'; 
+import Joi from 'joi-browser'; 
+// import { login_schema } from './services/joi'; 
 // COMPONENTS
 import Jumbotron from './components/Jumbotron'; 
 import Navbar from './components/sidebar'; 
@@ -21,6 +23,7 @@ class App extends React.Component {
             username: '',
             email: '',
             password: '',
+            error: '',
             logged: false,
             changes_saved: false,
             file_name: '', 
@@ -158,6 +161,7 @@ class App extends React.Component {
     // LOGIN SUBMIT METHOD
     login_submit = async (e) => {
         e.preventDefault();
+        
         await axios.get('/api/login_patient', {
             params: {
                 username: this.state.username,
@@ -183,13 +187,32 @@ class App extends React.Component {
             const token = user.headers['x-auth-token'];
             localStorage.setItem('token', token); 
         } )
-        .catch( ex => console.log('Unable to retrieve data: ', ex) ); 
+        .catch( ex => {
+            console.log('username or password is incorrect: ', ex);
+            this.setState({ error: 'username or password is incorrect' });
+            alert(this.state.error); 
+        } ); 
     }
 
     // REGISTER SUBMIT   REGISTER SUBMIT     REGISTER SUBMIT     REGISTER SUBMIT    REGISTER SUBMIT 
     register_submit = async (e) => {
         e.preventDefault();
-        await axios.post('/api/create_patient', {
+
+        // JOI SCHEMA
+        const schema = {
+            username: Joi.string().min(4).max(15).required(),
+            password: Joi.string().min(4).max(128).required(),
+            email: Joi.string().email({ minDomainAtoms: 2 }).required()
+        }
+
+        // JOI VALIDATION 
+        const validate = Joi.validate({
+            username: this.state.username,
+            email: this.state.email, 
+            password: this.state.password
+        }, schema)
+        .then(async () => {
+            await axios.post('/api/create_patient', {
                 username: this.state.username,
                 password: this.state.password,
                 email: this.state.email
@@ -214,6 +237,12 @@ class App extends React.Component {
             localStorage.setItem('token', token); 
         } )
         .catch( ex => console.log('Unable to retrieve data: ', ex) ); 
+        })
+        .catch(ex => {
+            console.log('not working', ex.details[0].message);
+            this.setState({ error: ex.details[0].message }); 
+            alert(this.state.error); 
+        }); 
     }
 
     // LOGOUT   LOGOUT  LOGOUT  LOGOUT  LOGOUT  LOGOUT  LOGOUT 

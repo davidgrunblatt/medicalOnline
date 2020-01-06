@@ -6,7 +6,7 @@ const jwt = require('jsonwebtoken');
 const patient_schema = new mongoose.Schema({
     username: {
         type: String,
-        minlength: 3, 
+        minlength: 4, 
         maxlength: 15,
         required: true
     },
@@ -18,7 +18,7 @@ const patient_schema = new mongoose.Schema({
     password: {
         type: String,
         required: true,
-        minlength: 10, 
+        minlength: 4, 
         maxlength: 128
     },
     phone: {
