@@ -75,10 +75,6 @@ class App extends React.Component {
 
     // FILE UPLOAD  // FILE UPLOAD  // FILE UPLOAD // FILE UPLOAD  // FILE UPLOAD  // FILE UPLOAD
     file_change = (e) => {
-        if(e.target.type === 'text'){
-            this.setState({ file_name: e.target.value }); 
-            console.log(e.target.value);
-        } 
         if (e.target.type === 'file') {
             this.setState({ file: e.target.files[0] }, () => console.log('file state', this.state.file)); 
             console.log(e.target.value);
@@ -103,7 +99,12 @@ class App extends React.Component {
                 this.setState({ file_saved: false }); 
             }, 1000); 
         } )
-        .catch( ex => console.log('unable to send file', ex) ); 
+        .catch( ex => {
+            console.log('unable to send file', ex);
+            const error = 'unable to send file. try again shortly.';
+            this.setState({ error }); 
+            alert(this.state.error); 
+        } ); 
     }
 
     // EDIT FORM - HANDLER      EDIT FORM       EDIT FORM       EDIT FORM       EDIT FORM       EDIT FORM
