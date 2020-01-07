@@ -24,7 +24,7 @@ class Login extends React.Component{
                     />
                 </div>
                 <div className = 'form-group'>
-                    <input type = 'text' name = 'password' className = 'form-control' 
+                    <input type = 'password' name = 'password' className = 'form-control' 
                         value = {this.props.login.password} onChange = {this.props.login.change}
                         placeHolder = "password" required
                     />

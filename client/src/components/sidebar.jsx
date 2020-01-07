@@ -5,14 +5,14 @@ import Scrollchor from 'react-scrollchor';
 import '../styles/navbar.css'; 
 
 class Navbar extends Component {
-    state = { 
-        onSetSidebarOpen: true,
-        sidebarOpen: false
-     }
+    // state = { 
+    //     onSetSidebarOpen: true,
+    //     sidebarOpen: false
+    //  }
 
-    onSetSidebarOpen = (open) => {
-        this.setState({ sidebarOpen: open });
-    }
+    // onSetSidebarOpen = (open) => {
+    //     this.setState({ sidebarOpen: open });
+    // }
 
     render() { 
         // WRITE NAVBAR CONTENT IN content, THEN INJECT IT INTO SIDEBAR 
@@ -66,13 +66,13 @@ class Navbar extends Component {
                 <Sidebar 
                     pullRight // floats the sidebar to the right 
                     sidebar={<b>{ content }</b>} // SIDEBAR CONTENT GOES HERE 
-                    open={this.state.sidebarOpen} // opens value is this.state.onSetSidebarOpen which is passed to the function
-                    onSetOpen={this.onSetSidebarOpen} // triggers open and close of sidebar 
+                    open={this.props.sidebarOpen} // opens value is this.state.onSetSidebarOpen which is passed to the function
+                    onSetOpen={this.props.onSetSidebarOpen} // triggers open and close of sidebar 
                     styles={{ sidebar: navbar_styling }} // styling 
                 >
                 {/* HAMBURGER SECTION WITH CSS CLASSES */}
-                    <button onClick={() => this.onSetSidebarOpen(true)} 
-                    className={ this.state.sidebarOpen ? "hamburger hamburger--elastic is-active" : "hamburger hamburger--elastic" } 
+                    <button onClick={ () => this.props.onSetSidebarOpen(true)} 
+                    className={ this.props.sidebarOpen ? "hamburger hamburger--elastic is-active" : "hamburger hamburger--elastic" } 
                     type="button" style = {{ float: 'right', marginTop: 10 }} >
                         <span className="hamburger-box">
                             <span className="hamburger-inner"></span>

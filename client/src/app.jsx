@@ -35,8 +35,15 @@ class App extends React.Component {
                 phone: '',
                 chatKey: ''
             },
-            file: ''
+            file: '',
+            onSetSidebarOpen: true,
+            sidebarOpen: false
         }
+    }
+
+    // SIDE BAR HANDLER 
+    onSetSidebarOpen = (open) => {
+        this.setState({ sidebarOpen: open });
     }
 
     // PAGE CHANGER 
@@ -51,6 +58,9 @@ class App extends React.Component {
             console.log(e.target.id); 
             this.setState({ page: 'consultation' }); 
         }
+        setTimeout(() => {
+            this.setState({ sidebarOpen: false }); 
+        }, 1500);
     }
 
     jwt = () => {
@@ -310,7 +320,10 @@ class App extends React.Component {
                 <div id = 'parent_container' className = 'fade_transition'>
                     <header className = 'header'>
                         <img src = {require('./images/logo.png')} alt = 'brand logo' />
-                        <Navbar page_handler = {this.page_handler} logged = {this.state.logged} logout = {this.logout_handler} /> 
+                        <Navbar page_handler = {this.page_handler} logged = {this.state.logged} logout = {this.logout_handler} 
+                                onSetSidebarOpen = {this.onSetSidebarOpen} 
+                                sidebarOpen = {this.state.sidebarOpen}
+                        /> 
                     </header>
                     <main>
                         { this.state.logged ? <Dashboard data = {user_data} submit = {this.update_submit}
@@ -326,7 +339,9 @@ class App extends React.Component {
                 <div id = 'parent_container' className = 'fade_transition'>
                     <header className = 'header'>
                         <img src = {require('./images/logo.png')} alt = 'brand logo' />
-                        <Navbar  page_handler = {this.page_handler} logged = {this.state.logged} logout = {this.logout_handler} /> 
+                        <Navbar  page_handler = {this.page_handler} logged = {this.state.logged} logout = {this.logout_handler} 
+                                onSetSidebarOpen = {this.onSetSidebarOpen} 
+                                sidebarOpen = {this.state.sidebarOpen} /> 
                     </header>
                     <main>
                         <Jumbotron /> 
@@ -342,7 +357,9 @@ class App extends React.Component {
                 <div id = 'parent_container' className = 'fade_transition'>
                     <header className = 'header'>
                         <img src = {require('./images/logo.png')} alt = 'brand logo' />
-                        <Navbar  page_handler = {this.page_handler} logged = {this.state.logged} logout = {this.logout_handler} /> 
+                        <Navbar  page_handler = {this.page_handler} logged = {this.state.logged} logout = {this.logout_handler} 
+                                onSetSidebarOpen = {this.onSetSidebarOpen}
+                                sidebarOpen = {this.state.sidebarOpen} />  
                     </header>
                     <main>
                         {this.state.logged ? <Chat token = {this.jwt_decode()} /> : <Jumbotron /> }
