@@ -155,7 +155,7 @@ class App extends React.Component {
 
     // LOGIN - FORM HANDLER     LOGIN   LOGIN   LOGIN   LOGIN   LOGIN   LOGIN   LOGIN   LOGIN 
     login_change = (e) => {
-        this.setState({ [e.target.name]: e.target.value }); 
+        this.setState({ [e.target.name]: e.target.value.toLowerCase() }); 
     }
 
     // LOGIN SUBMIT METHOD
@@ -236,7 +236,11 @@ class App extends React.Component {
             const token = user.headers['x-auth-token'];
             localStorage.setItem('token', token); 
         } )
-        .catch( ex => console.log('Unable to retrieve data: ', ex) ); 
+        .catch( ex => {
+            const error = 'username or email already registered';
+            this.setState({ error }); 
+            alert(this.state.error);
+        } ); 
         })
         .catch(ex => {
             console.log('not working', ex.details[0].message);
