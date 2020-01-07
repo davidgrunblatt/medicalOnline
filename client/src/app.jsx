@@ -5,7 +5,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import axios from 'axios'; 
 import jwtDecode from 'jwt-decode'; 
 import Joi from 'joi-browser'; 
-// import { login_schema } from './services/joi'; 
+
 // COMPONENTS
 import Jumbotron from './components/Jumbotron'; 
 import Navbar from './components/sidebar'; 
