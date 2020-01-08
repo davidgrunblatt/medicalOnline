@@ -70,3 +70,9 @@ $boxShadow: 0px 2px 1px silver;
         background-size: contain;
     }
 }
+
+@media screen and (min-width: 2559px){
+    .jumbotron_parent div {
+        width: 50%;
+    }
+}
