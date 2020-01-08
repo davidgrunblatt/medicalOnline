@@ -49,8 +49,6 @@ router.post('/', auth, async(req, res) => {
       file.mv(location, function(err) {
         if (err)
           return res.status(500).send('unable');
-
-        // res.send(account);
       });
    }
 

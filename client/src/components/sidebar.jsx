@@ -5,15 +5,6 @@ import Scrollchor from 'react-scrollchor';
 import '../styles/navbar.css'; 
 
 class Navbar extends Component {
-    // state = { 
-    //     onSetSidebarOpen: true,
-    //     sidebarOpen: false
-    //  }
-
-    // onSetSidebarOpen = (open) => {
-    //     this.setState({ sidebarOpen: open });
-    // }
-
     render() { 
         // WRITE NAVBAR CONTENT IN content, THEN INJECT IT INTO SIDEBAR 
         const content = 

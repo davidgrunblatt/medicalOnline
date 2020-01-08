@@ -63,6 +63,7 @@ class App extends React.Component {
         }, 1500);
     }
 
+    
     jwt = () => {
         const token = localStorage.getItem('token');
         return token; 

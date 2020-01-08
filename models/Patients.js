@@ -33,6 +33,9 @@ const patient_schema = new mongoose.Schema({
     documents: {
         type: Array
     },
+    notes: {
+        type: Array
+    },
     isAdmin: Boolean,
     chatKey: {
         type: String,

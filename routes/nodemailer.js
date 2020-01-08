@@ -5,11 +5,13 @@ const nodemailer = require('nodemailer');
 const path = require('path'); 
 
 router.post('/', async (req, res) => {
+
     const new_user = {
         name: req.body.name,
         subject: req.body.subject,
         message: req.body.message
     }
+    const email = "dpg1919@gmail.com"; 
 
     try {
         // create reusable transporter object using the default SMTP transport
@@ -26,7 +28,7 @@ router.post('/', async (req, res) => {
         // send mail with defined transport object
         let info = await transporter.sendMail({
         from: new_user.name, // sender address
-        to: "dpg1919@gmail.com", // list of receivers
+        to: email, // list of receivers
         subject: new_user.subject, // Subject line
         text: '', // plain text body
         html: `<p>name: ${new_user.name} <br/>
