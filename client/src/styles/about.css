@@ -1,0 +1,36 @@
+
+#about_background {
+    background-image: url('../images/paris.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+#about_container {
+    background: rgba(255, 255, 255, 0);
+    border: solid thick rgba(255, 217, 0, 0.705);
+    box-shadow: 4px 4px 3px rgba(121, 121, 121, 0.39);
+    min-height: 600px;
+    /* padding: 10px; */
+    margin: 40px 0px;
+    display: flex;
+    align-items:center;
+    justify-content: center;
+}
+
+iframe {
+    border: solid thick white;
+    box-shadow: 3px 2px 1px rgba(82, 82, 82, 0.247);
+    width: 700px;
+    height: 500px;
+}
+
+
+
+@media screen and (max-width: 767px){
+
+    iframe {
+        max-width: 400px;
+        height: 300px;
+    }
+}

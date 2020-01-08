@@ -13,6 +13,8 @@ import Login from './components/Login';
 import Dashboard from './components/Dashboard'; 
 import Chat from './components/Chat'; 
 import Contact from './components/Contact'; 
+import About from './components/About'; 
+import Footer from './components/Footer'; 
 
 
 class App extends React.Component {
@@ -332,6 +334,7 @@ class App extends React.Component {
                     </main>
                     <footer>
                        <Contact /> 
+                       <Footer /> 
                     </footer>
                 </div>
              );
@@ -346,9 +349,11 @@ class App extends React.Component {
                     </header>
                     <main>
                         <Jumbotron /> 
+                        <About /> 
                     </main>
                     <footer>
                        <Contact /> 
+                       <Footer /> 
                     </footer>
                 </div>
             );
@@ -369,6 +374,7 @@ class App extends React.Component {
                     </main>
                     <footer>
                        <Contact /> 
+                       <Footer /> 
                     </footer>
                 </div>
             );

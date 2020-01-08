@@ -1,0 +1,26 @@
+
+#footer_container {
+    margin-top: 40px;
+    padding: 10px;
+    background: rgba(204, 204, 204, 0.438);
+    border: solid thick rgba(190, 188, 188, 0.171);
+}
+#footer_container span {
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+#footer_container a {
+    margin: 10px 0px;
+}
+
+#footer_container img {
+    border: solid thick rgba(192, 192, 192, 0.39);
+    box-shadow: 2px 2px 2px silver;
+    width: 200px;
+    border-radius: 20px;
+    margin: 10px;
+    margin-left: -10px;
+}
