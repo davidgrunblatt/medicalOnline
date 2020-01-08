@@ -39,7 +39,7 @@ body {
 }
 
 .slide_out {
-    right: 2000px;
+    right: 2500px;
 }
 
 .slide_in {
@@ -61,9 +61,9 @@ body {
 }
 
 
-@media screen and (min-width: 1440px){
-   /* #parent_container {
-    max-width: 80%;
-    margin: 0 auto;
-    } */
+@media screen and (min-width: 2560px){
+    #root {
+        width: 80%;
+        margin: 0 auto;
+    }
 }
