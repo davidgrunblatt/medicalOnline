@@ -7,6 +7,7 @@ import jwtDecode from 'jwt-decode';
 import Joi from 'joi-browser'; 
 
 // COMPONENTS
+import Carousel from './components/Carousel'; 
 import Jumbotron from './components/Jumbotron'; 
 import Navbar from './components/sidebar'; 
 import Login from './components/Login'; 
@@ -349,6 +350,7 @@ class App extends React.Component {
                     </header>
                     <main>
                         <Jumbotron /> 
+                        <Carousel />
                         <About /> 
                     </main>
                     <footer>
