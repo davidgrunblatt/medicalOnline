@@ -28,14 +28,16 @@ class Navbar extends Component {
                     <p id = 'consultation'>Consultation</p>
                     <img src = {require('../images/next.png')} alt = ''/>
                 </a>}
-                <a className = 'nav_item' onClick = {this.props.page_handler} >
-                    <img src = {require('../images/contact.png')} alt = ''/>
-                    <p id = 'contact'>Contact</p>
-                    <img src = {require('../images/next.png')} alt = ''/>
-                </a>
-                {this.props.logged && <a className = 'nav_item' onClick = {this.props.logout} >
+                <Scrollchor to="#contact_container" animate={{offset: 10, duration: 600}} className="nav-link">
+                    <a className = 'nav_item' onClick = {this.props.page_handler} >
+                        <img src = {require('../images/contact.png')} alt = ''/>
+                        <p id = 'contact'>Contact</p>
+                        <img src = {require('../images/next.png')} alt = ''/>
+                    </a>
+                </Scrollchor>
+                {this.props.logged && <a className = 'nav_item' onClick = {this.props.logout} onClick = {this.props.page_handler} >
                     <img src = {require('../images/logout.png')} alt = ''/>
-                    <p>Logout</p>
+                    <p id = 'logout'>Logout</p>
                     <img src = {require('../images/next.png')} alt = ''/>
                 </a>}
             </nav> 

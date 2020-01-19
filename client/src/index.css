@@ -35,7 +35,7 @@ body {
 .slide_transition {
     position: relative;
     transition-property: right, left;
-    transition-duration: 2s;
+    transition-duration: 1s;
 }
 
 .slide_out {
