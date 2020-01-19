@@ -21,8 +21,8 @@
   background-image: url("../../images/shanghai.jpg");
   background-position: center;
   background-size: cover;
-  -webkit-box-shadow: 10px 5px 5px silver;
-          box-shadow: 10px 5px 5px silver;
+  -webkit-box-shadow: 2px 5px 5px silver;
+          box-shadow: 2px 5px 5px silver;
   border: solid thick rgba(255, 206, 44, 0.9);
 }
 

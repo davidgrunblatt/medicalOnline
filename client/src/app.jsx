@@ -63,7 +63,7 @@ class App extends React.Component {
         }
         setTimeout(() => {
             this.setState({ sidebarOpen: false }); 
-        }, 1500);
+        }, 500);
     }
 
     
