@@ -1,3 +1,9 @@
+.global_size {
+  width: 95%;
+  margin: 0 auto;
+  margin-bottom: 30px;
+}
+
 /* HEADER SECTION */
 .header {
   width: 100%;
@@ -28,10 +34,8 @@
       -ms-flex-pack: center;
           justify-content: center;
   min-height: 500px;
-  padding-top: 30px;
-  padding-bottom: 30px;
-  -webkit-box-shadow: 10px 5px 5px silver;
-          box-shadow: 10px 5px 5px silver;
+  -webkit-box-shadow: 2px 5px 5px silver;
+          box-shadow: 2px 5px 5px silver;
   border: solid thick rgba(240, 210, 113, 0.9);
   background-image: url("../../images/mapa.jpg");
   background-size: contain;
@@ -64,7 +68,7 @@
     width: 100%;
   }
   .jumbotron_parent div:nth-child(1) {
-    width: 97%;
+    width: 93%;
   }
   .jumbotron_parent {
     background-image: url("../../images/mapa_mobile.png");

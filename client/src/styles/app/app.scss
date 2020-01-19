@@ -1,6 +1,12 @@
 
 $boxShadow: 0px 2px 1px silver;
 
+.global_size {
+    width: 95%;
+    margin: 0 auto;
+    margin-bottom: 30px;
+}
+
 /* HEADER SECTION */ 
 
 .header {
@@ -28,9 +34,7 @@ $boxShadow: 0px 2px 1px silver;
     justify-content: center;
     
     min-height:500px;
-    padding-top: 30px;
-    padding-bottom: 30px;
-    box-shadow: 10px 5px 5px silver;
+    box-shadow: 2px 5px 5px silver;
     border: solid thick rgba(240, 210, 113, .9);
     background-image: url('../../images/mapa.jpg');
     background-size: contain;
@@ -61,7 +65,7 @@ $boxShadow: 0px 2px 1px silver;
         width: 100%;
     }
     .jumbotron_parent div:nth-child(1) {
-        width: 97%;
+        width: 93%;
     }
 
     .jumbotron_parent {

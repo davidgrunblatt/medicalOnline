@@ -242,7 +242,7 @@ export default class VideoComponent extends Component {
         );
 
         return (
-            <div className="chat_parent_container slide_transition slide_out">
+            <div className="chat_parent_container global_size slide_transition slide_out">
                 <div className = 'chat'>
                     {showLocalTrack}
                     {!this.state.hasJoinedRoom && <input className = 'chat_items' type = 'text' placeHolder="Your Chat Key" onChange={this.handleRoomNameChange} 

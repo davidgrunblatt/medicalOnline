@@ -7,14 +7,12 @@
     background-size: cover;
     // position: absolute;
     min-height: 550px;
-    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    margin-bottom: 30px;
 
-    box-shadow: 10px 5px 5px silver;
+    box-shadow: 2px 5px 5px silver;
     border: solid thick rgba(240, 210, 113, .6);
 
     span {

@@ -16,13 +16,11 @@
 #dashboard_parent_container {
     display:flex;
     justify-content: center;
-    margin-bottom: 30px;
     background-image: url('../../images/shanghai.jpg'); 
     background-position: center;
     background-size: cover;
     box-shadow: 10px 5px 5px silver;
     border: solid thick rgba(255, 206, 44, 0.9);
-    width: 100%;
 }
 
 #dashboard_container {

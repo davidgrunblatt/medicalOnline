@@ -64,7 +64,7 @@ class Contact extends Component{
 
     render(){
         return(
-            <div id = 'contact_container'>
+            <div id = 'contact_container' className = 'global_size'>
                 <div>
                     <h1>Contact the Clinic</h1>
                     <form onSubmit = {this.joi_funk}>

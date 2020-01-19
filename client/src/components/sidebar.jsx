@@ -13,36 +13,33 @@ class Navbar extends Component {
                 <img src = {require('../images/logo.png')} alt = 'logo' />
             </span>
             <nav>
-                    <a className = 'nav_item' onClick = {this.props.page_handler} >
-                        <img src = {require('../images/home.png')} alt = ''/>
-                        <p id = 'home'>Home</p>
-                        <img src = {require('../images/next.png')} alt = ''/>
-                    </a>
-                    <a className = 'nav_item' onClick = {this.props.page_handler} >
-                        <img src = {require('../images/login.png')} alt = ''/>
-                        <p id = 'login'>{this.props.logged ? "Dashboard" : "Login"}</p>
-                        <img src = {require('../images/next.png')} alt = ''/>
-                    </a>
-                    {this.props.logged && <a className = 'nav_item' onClick = {this.props.page_handler} >
-                        <img src = {require('../images/doctor-icon.png')} alt = ''/>
-                        <p id = 'consultation'>Consultation</p>
-                        <img src = {require('../images/next.png')} alt = ''/>
-                    </a>}
-                    <Scrollchor to="#contact_container" animate={{offset: 12, duration: 300}}>
-                        <a className = 'nav_item' onClick = {this.props.page_handler} >
-                            <img src = {require('../images/contact.png')} alt = ''/>
-                            <p id = 'contact'>Contact</p>
-                            <img src = {require('../images/next.png')} alt = ''/>
-                        </a>
-                    </Scrollchor>
-                    {this.props.logged && <a className = 'nav_item' onClick = {this.props.logout} >
-                        <img src = {require('../images/logout.png')} alt = ''/>
-                        <p>Logout</p>
-                        <img src = {require('../images/next.png')} alt = ''/>
-                    </a>}
+                <a className = 'nav_item' onClick = {this.props.page_handler} >
+                    <img src = {require('../images/home.png')} alt = ''/>
+                    <p id = 'home'>Home</p>
+                    <img src = {require('../images/next.png')} alt = ''/>
+                </a>
+                <a className = 'nav_item' onClick = {this.props.page_handler} >
+                    <img src = {require('../images/login.png')} alt = ''/>
+                    <p id = 'login'>{this.props.logged ? "Dashboard" : "Login"}</p>
+                    <img src = {require('../images/next.png')} alt = ''/>
+                </a>
+                {this.props.logged && <a className = 'nav_item' onClick = {this.props.page_handler} >
+                    <img src = {require('../images/doctor-icon.png')} alt = ''/>
+                    <p id = 'consultation'>Consultation</p>
+                    <img src = {require('../images/next.png')} alt = ''/>
+                </a>}
+                <a className = 'nav_item' onClick = {this.props.page_handler} >
+                    <img src = {require('../images/contact.png')} alt = ''/>
+                    <p id = 'contact'>Contact</p>
+                    <img src = {require('../images/next.png')} alt = ''/>
+                </a>
+                {this.props.logged && <a className = 'nav_item' onClick = {this.props.logout} >
+                    <img src = {require('../images/logout.png')} alt = ''/>
+                    <p>Logout</p>
+                    <img src = {require('../images/next.png')} alt = ''/>
+                </a>}
             </nav> 
         </div>; 
-
         const navbar_styling = { 
             background: "white", 
             width: 300, 
@@ -50,8 +47,7 @@ class Navbar extends Component {
             border: 'solid thick rgba(192, 192, 192, 0.589)',
             padding: 10,
             position: 'fixed'
-    }
-
+         }
         return ( 
             <div>
                 <Sidebar 

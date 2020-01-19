@@ -44,7 +44,7 @@ class Login extends React.Component{
         );
 
         return(
-                <div id = 'login' className = 'login_container'>
+                <div id = 'login' className = 'login_container global_size'>
                     <div> 
                         <span>
                             <img src ={require('../images/login.png')} alt = '' />

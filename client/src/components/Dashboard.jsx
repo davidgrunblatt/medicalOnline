@@ -30,7 +30,7 @@ class Dashboard extends React.Component {
 
     render() { 
         return ( 
-            <div id = 'dashboard_parent_container' className = 'slide_transition slide_out_left'>
+            <div id = 'dashboard_parent_container' className = 'global_size slide_transition slide_out_left'>
                 <div id = 'dashboard_container'>
                     <section>
                         <h1><span>Your Dashboard</span> {this.props.data.username} </h1>

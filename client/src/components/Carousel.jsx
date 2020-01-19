@@ -27,16 +27,16 @@ class Carousel extends React.Component{
             
             if(count > 3) { count = 0; }
 
-            if(count == 0){
+            if(count === 0){
                 this.setState({ image1: one }); 
             }
-            else if(count == 1){
+            else if(count === 1){
                 this.setState({ image2: two }); 
             }
-            else if(count == 2){
+            else if(count === 2){
                 this.setState({ image1: three }); 
             } 
-            else if (count == 3){
+            else if (count === 3){
                 this.setState({ image2: four }); 
             }
         }, 5000); 
@@ -59,7 +59,7 @@ class Carousel extends React.Component{
     }
     render(){
         return(
-            <div className = 'page_transition'>
+            <div className = 'page_transition global_size'>
                 <main id = 'carousel_background' className = 'jumbotron_parent'>
                     <div className = 'jumbo_div fade_transition'>
                         <img src = {this.state.image1} alt = '' />

@@ -4,7 +4,6 @@
   background-position: center;
   background-size: cover;
   min-height: 550px;
-  width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -18,9 +17,8 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  margin-bottom: 30px;
-  -webkit-box-shadow: 10px 5px 5px silver;
-          box-shadow: 10px 5px 5px silver;
+  -webkit-box-shadow: 2px 5px 5px silver;
+          box-shadow: 2px 5px 5px silver;
   border: solid thick rgba(240, 210, 113, 0.6);
 }
 
