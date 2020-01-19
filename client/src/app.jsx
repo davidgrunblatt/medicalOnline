@@ -60,9 +60,8 @@ class App extends React.Component {
         } else if (e.target.id === 'consultation'){
             console.log(e.target.id); 
             this.setState({ page: 'consultation' }); 
-        } else if (e.target.id === 'logout'){
-            this.setState({ page: 'home' }); 
-        }
+        } 
+        
         setTimeout(() => {
             this.setState({ sidebarOpen: false }); 
         }, 500);
@@ -268,6 +267,7 @@ class App extends React.Component {
 
     // LOGOUT   LOGOUT  LOGOUT  LOGOUT  LOGOUT  LOGOUT  LOGOUT 
     logout_handler = (e) => {
+        this.setState({ page: 'home' }); 
         const remove = localStorage.removeItem('token');
         this.setState({ logged: false }); 
     }
