@@ -7,8 +7,9 @@ class Footer extends Component {
         return ( 
             <div id = 'footer_container'>
                 <span>
-                    <img src = {require('../images/logo.png')} alt = 'logo' /> 
-                    {/* <a href="mailto:clinica@furelos.com">clinica@furelos.com</a> */}
+                    <a href = 'http://www.furelos.com/' target = "_blank" >
+                        <img src = {require('../images/logo.png')} alt = 'logo' /> 
+                    </a>
                     <a href = 'https://www.linkedin.com/in/pablo-furelos-8583b03b/?ppe=1' target = "_blank" >
                         <img src = {require('../images/linkedin.png')} alt = 'linkedin' /> 
                     </a>

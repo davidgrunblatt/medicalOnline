@@ -69,13 +69,13 @@ class App extends React.Component {
 
     
     jwt = () => {
-        const token = localStorage.getItem('token');
+        const token = localStorage.getItem('furelosToken');
         return token; 
     }
 
     // RETRIEVE && DECODE - JWT 
     jwt_decode = () => {
-        const token = localStorage.getItem('token');
+        const token = localStorage.getItem('furelosToken');
         const decoded = jwtDecode(token);
         return decoded; 
     }
@@ -201,7 +201,7 @@ class App extends React.Component {
             
             // SAVING JWT IN LOCAL APPLICATION STORAGE 
             const token = user.headers['x-auth-token'];
-            localStorage.setItem('token', token); 
+            localStorage.setItem('furelosToken', token); 
         } )
         .catch( ex => {
             console.log('username or password is incorrect: ', ex);
