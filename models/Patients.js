@@ -41,7 +41,8 @@ const patient_schema = new mongoose.Schema({
         type: String,
         required: true,
         maxlength: 4
-    }
+    },
+    appointments: Array
 });
 
 // GENERATE AUTH TOKEN 

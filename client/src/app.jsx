@@ -16,6 +16,7 @@ import Chat from './components/Chat';
 import Contact from './components/Contact'; 
 import About from './components/About'; 
 import Footer from './components/Footer'; 
+import Appointments from './components/Appointments'; 
 
 
 class App extends React.Component {
@@ -53,14 +54,14 @@ class App extends React.Component {
     page_handler = (e) => {
         if(e.target.id === 'home'){
             this.setState({ page: 'home' });
-            console.log(e.target.id); 
         } else if (e.target.id === 'login'){
-            console.log(e.target.id); 
             this.setState({ page: 'dashboard' })
         } else if (e.target.id === 'consultation'){
-            console.log(e.target.id); 
             this.setState({ page: 'consultation' }); 
+        } else if (e.target.id === 'logout'){
+            this.setState({ page: 'home' }); 
         } 
+        
         
         setTimeout(() => {
             this.setState({ sidebarOpen: false }); 
@@ -250,7 +251,7 @@ class App extends React.Component {
             
             // SAVING JWT IN LOCAL APPLICATION STORAGE 
             const token = user.headers['x-auth-token'];
-            localStorage.setItem('token', token); 
+            localStorage.setItem('furelosToken', token); 
         } )
         .catch( ex => {
             const error = 'username or email already registered';
@@ -268,8 +269,11 @@ class App extends React.Component {
     // LOGOUT   LOGOUT  LOGOUT  LOGOUT  LOGOUT  LOGOUT  LOGOUT 
     logout_handler = (e) => {
         this.setState({ page: 'home' }); 
-        const remove = localStorage.removeItem('token');
-        this.setState({ logged: false }); 
+        const remove = localStorage.removeItem('furelosToken');
+        this.setState({
+            logged: false,
+            sidebarOpen: false
+        }); 
     }
 
     // COMPONENTDIDMOUNT TRIGGERS FADE IN ON LOAD 
@@ -277,7 +281,7 @@ class App extends React.Component {
         this.body_fade_in();
 
         // ON MOUNT CHECK IF JWT, TO RENDER PAGE
-        const token = localStorage.getItem('token');
+        const token = localStorage.getItem('furelosToken');
         if(token){
             await axios.get('/api/get_patient', {
                 params: {
@@ -352,13 +356,14 @@ class App extends React.Component {
                     </header>
                     <main>
                         <Jumbotron /> 
-                        <Carousel />
+                        {/* <Carousel /> */}
                         <About /> 
                     </main>
                     <footer>
                        <Contact /> 
                        <Footer /> 
                     </footer>
+                    {/* <Appointments />  */}
                 </div>
             );
         }

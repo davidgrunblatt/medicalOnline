@@ -34,7 +34,7 @@ class Navbar extends Component {
                     <p id = 'contact' onClick = {this.props.page_handler}>Contact</p>
                     <img src = {require('../images/next.png')} alt = ''/>
                 </Scrollchor>
-                {this.props.logged && <a className = 'nav_item' onClick = {this.props.logout}>
+                {this.props.logged && <a className = 'nav_item' onClick = {this.props.logout} >
                     <img src = {require('../images/logout.png')} alt = ''/>
                     <p id = 'logout'>Logout</p>
                     <img src = {require('../images/next.png')} alt = ''/>

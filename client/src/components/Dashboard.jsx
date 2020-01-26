@@ -42,6 +42,7 @@ class Dashboard extends React.Component {
                             <li><span>Full Name:</span> {this.props.data.fullname}</li>
                             <li><span>Email:</span> {this.props.data.email}</li>
                             <li><span>Phone #:</span> {this.props.data.phone}</li>
+                            <li><span>Chat Key:</span> {this.props.data.chatKey}</li>
                         </ul>
                     </section>
                     {/* EDIT SECTION TO TOGGLE  */}
@@ -52,17 +53,17 @@ class Dashboard extends React.Component {
                     {this.state.toggle === 1 && <section id = "dashboard_edit" >
                         <form>
                             <div className = 'form-group'>
-                                <input type = 'text' name = 'fullname' value = {this.props.data.fullname} 
+                                <input type = 'text' name = 'fullname' value = {this.props.data.fullname} placeholder = "full name"
                                 onChange = {this.props.change} className = 'form-control'
                                 /> 
                             </div>
                             <div className = 'form-group'>
-                                <input type = 'email' name = 'email' value = {this.props.data.email} 
+                                <input type = 'email' name = 'email' value = {this.props.data.email} placeholder = "email"
                                 onChange = {this.props.change} className = 'form-control'
                                 />
                             </div>
                             <div className = 'form-group'>
-                                <input type = 'string' name = 'phone' value = {this.props.data.phone} 
+                                <input type = 'string' name = 'phone' value = {this.props.data.phone} placeholder = "phone"
                                 onChange = {this.props.change} className = 'form-control'
                                 />
                             </div>

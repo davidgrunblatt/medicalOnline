@@ -16,6 +16,9 @@ const dr_get_patient = require('../routes/dr_get_patient');
 const note_patient = require('../routes/note_patient'); 
 const note_doctor = require('../routes/note_doctor'); 
 const delete_note_patient = require('../routes/delete_note_patient'); 
+const calendar = require('../routes/appointments/month_generator'); 
+const get_appointments = require('../routes/appointments/get_appointments'); 
+const make_appointment = require('../routes/appointments/make_appointment'); 
 
 module.exports = function(app){
     app.use(bodyP.json());
@@ -35,4 +38,7 @@ module.exports = function(app){
     app.use('/api/note_patient', note_patient); 
     app.use('/api/note_doctor', note_doctor); 
     app.use('/api/delete_note_patient', delete_note_patient); 
+    app.use('/api/calendar', calendar); 
+    app.use('/api/get_appointments', get_appointments); 
+    app.use('/api/make_appointment', make_appointment); 
 }
