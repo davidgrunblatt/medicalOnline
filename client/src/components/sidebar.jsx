@@ -24,6 +24,11 @@ class Navbar extends Component {
                     <img src = {require('../images/next.png')} alt = ''/>
                 </a>
                 {this.props.logged && <a className = 'nav_item' onClick = {this.props.page_handler} >
+                    <img src = {require('../images/calendar.png')} alt = ''/>
+                    <p id = 'appointments'>Appointments</p>
+                    <img src = {require('../images/next.png')} alt = ''/>
+                </a>}
+                {this.props.logged && <a className = 'nav_item' onClick = {this.props.page_handler} >
                     <img src = {require('../images/doctor-icon.png')} alt = ''/>
                     <p id = 'consultation'>Consultation</p>
                     <img src = {require('../images/next.png')} alt = ''/>

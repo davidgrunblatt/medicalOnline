@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import Calendar from 'react-calendar';
 import axios from 'axios'; 
+import '../styles/appointments.css'; 
  
 class Appointments extends Component {
   state = {
@@ -23,9 +24,8 @@ class Appointments extends Component {
     const selectedMonth = this.state.date.getMonth(); 
     const selectedDate = this.state.date.getDate(); 
     const selectedDay = this.state.date.getDay();
-    this.setState({ selectedYear, selectedMonth, selectedDate, selectedDay });
-
-    this.date_checker(selectedYear, selectedMonth, selectedDate); 
+    this.setState({ selectedYear, selectedMonth, selectedDate, selectedDay }, 
+      () => {this.date_checker(selectedYear, selectedMonth, selectedDate)});
   }
 
   // TIME SELECTION 
@@ -65,38 +65,49 @@ class Appointments extends Component {
       })
       .catch(ex => console.log('Unable to make axios req', ex)); 
   }
+
+  componentDidMount(){
+    const dashboard = document.querySelector('#appointment_container');
+    this.slide = setTimeout(() => {
+        dashboard.classList.remove('slide_out_left');
+        dashboard.classList.add('slide_in_right'); 
+    }, 1000);
+  }
+
+  componentWillUnmount(){
+      clearTimeout(this.slide); 
+  }
  
   render() {
-
-    const styles = {
-        display: "flex"
-    }
-
     return (
-      <div style = {styles}>
-        <Calendar
+      <div id = 'appointment_container' className = 'global_size slide_transition slide_out_left'>
+        {/* CALENDAR COMPONENT */}
+        <Calendar className = 'calendar'
           onChange={this.onChange}
           value={this.state.date}
         />
-        <div className = 'appointments'>
-            <p>Year: {this.state.selectedYear}</p>
-            <p>Month: {this.state.selectedMonth}</p>
-            <p>Date: {this.state.selectedDate}</p>
-            <p>Day: {this.state.selectedDay}</p>
-            <p>Time: {this.state.selectedTime}</p>
-            {/* SUBMIT APPOINTMENT BUTTON  */}
-            <button className = 'btn' onClick = {this.appointmentGenerator} >Select date</button>
-            <div>
-                <p>Available Times</p>
+        {/* DATE SELECTED DISPLAY */}
+        <div className = 'date_container'>
+            <div className = 'date_selected'>
+              <p>Year: {this.state.selectedYear}</p>
+              <p>Month: {this.state.selectedMonth}</p>
+              <p>Date: {this.state.selectedDate}</p>
+              <p>Day: {this.state.selectedDay}</p>
+              <p>Time: {this.state.selectedTime}</p>
+            </div>
+            {/* AVAILABLE TIMES BELOW  */}
+            <div className = 'times'>
+                <h4>Available times</h4>
                 <ul>
                     {this.state.times && this.state.times.map(item => {
                         return <li key = {this.state.times.indexOf(item)} onClick = {this.selectTime}
                         >
-                        <span>{item}.00{item <= 5 ? 'pm' : 'am'}</span>
+                        <span className = 'badge'>{item}.00{item <= 6 || item === 12 ? 'pm' : 'am'}</span>
                         </li>
                     })}
                 </ul>
             </div>
+          <button className = 'btn btn-block' onClick = {this.appointmentGenerator} >Select date</button>
         </div>
       </div>
     );

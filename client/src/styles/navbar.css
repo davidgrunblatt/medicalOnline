@@ -21,7 +21,6 @@ nav p {
 .nav_item img{
     width: 25px;
     height: 25px;
-    border-radius: 50%;
 }
 
 nav a:hover {

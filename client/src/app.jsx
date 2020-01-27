@@ -60,8 +60,9 @@ class App extends React.Component {
             this.setState({ page: 'consultation' }); 
         } else if (e.target.id === 'logout'){
             this.setState({ page: 'home' }); 
+        } else if (e.target.id === 'appointments'){
+            this.setState({ page: 'appointments' }); 
         } 
-        
         
         setTimeout(() => {
             this.setState({ sidebarOpen: false }); 
@@ -369,7 +370,6 @@ class App extends React.Component {
                        <Contact /> 
                        <Footer /> 
                     </footer>
-                    <Appointments /> 
                 </div>
             );
         }
@@ -394,6 +394,27 @@ class App extends React.Component {
                     </footer>
                 </div>
             );
+        }
+        // APPOINTMENTS   APPOINTMENTS      APPOINTMENTS      APPOINTMENTS
+        else if(this.state.page === 'appointments'){
+            return ( 
+                <div id = 'parent_container' className = 'fade_transition'>
+                    <header className = 'header'>
+                        <img src = {require('./images/logo.png')} alt = 'brand logo' />
+                        <Navbar page_handler = {this.page_handler} logged = {this.state.logged} logout = {this.logout_handler} 
+                                onSetSidebarOpen = {this.onSetSidebarOpen} 
+                                sidebarOpen = {this.state.sidebarOpen}
+                        /> 
+                    </header>
+                    <main>
+                        { this.state.logged ? <Appointments /> : <Login login = {login_props} /> }
+                    </main>
+                    <footer>
+                       <Contact /> 
+                       <Footer /> 
+                    </footer>
+                </div>
+             );         
         }
     }
 }

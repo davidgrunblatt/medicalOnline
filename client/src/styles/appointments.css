@@ -1,0 +1,55 @@
+
+#appointment_container {
+    background-image: url('../images/madrid.jpg');
+    background-size: cover;
+    border: solid thick rgba(255, 187, 0, 0.644);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    min-height: 600px;
+    padding: 30px;
+}
+
+.date_container {
+    background: rgb(255, 255, 255);
+    margin-top: 5px;
+    padding: 10px;
+    min-height: 300px;
+    width: 350px;
+}
+
+.calendar, .date_container {
+    border: solid thick rgba(255, 187, 0, 0.863);
+    height: 310px;
+}
+
+.date_selected {
+    display: flex;
+    margin-left: -10px;
+}
+
+.date_selected p {
+    margin: 5px;
+}
+
+.times { /* available times */
+
+}
+
+.times ul {
+    list-style-type: none;
+    display: flex;
+    margin-left: -50px;
+    flex-wrap: wrap;
+    max-width: 400px;
+}
+
+ul li {
+    margin: 5px;
+    cursor: pointer; 
+}
+
+ul li:hover {
+    color: orange;
+}
