@@ -69,6 +69,7 @@ class App extends React.Component {
     }
 
     
+    // RETRIEVE JWT 
     jwt = () => {
         const token = localStorage.getItem('furelosToken');
         return token; 
@@ -97,6 +98,7 @@ class App extends React.Component {
         }
     }
 
+    // SUBMIT FILE HANDLER 
     file_submit = async (e) => {
         e.preventDefault();
         const form = new FormData();
@@ -307,6 +309,7 @@ class App extends React.Component {
         }
     }
 
+    // RENDER METHOD     RENDER METHOD 
     render() { 
         // PROPS FOR LOGIN COMPONENT
         const login_props = {
@@ -325,6 +328,7 @@ class App extends React.Component {
             file_saved: this.state.file_saved
         }
 
+        // DASHBOARD    DASHBOARD       DASHBOARD       DASHBOARD 
         if(this.state.page === 'dashboard'){
             return ( 
                 <div id = 'parent_container' className = 'fade_transition'>
@@ -344,8 +348,10 @@ class App extends React.Component {
                        <Footer /> 
                     </footer>
                 </div>
-             );
-        } else if (this.state.page === 'home'){
+             );         
+        } 
+        // HOMEPAGE     HOMEPAGE    HOMEPAGE    HOMEPAGE 
+        else if (this.state.page === 'home'){
             return ( 
                 <div id = 'parent_container' className = 'fade_transition'>
                     <header className = 'header'>
@@ -363,10 +369,11 @@ class App extends React.Component {
                        <Contact /> 
                        <Footer /> 
                     </footer>
-                    {/* <Appointments />  */}
+                    <Appointments /> 
                 </div>
             );
         }
+        // CONSULTATION     CONSULTATION    CONSULTATION    CONSULTATION 
         else if (this.state.page === 'consultation'){
             return ( 
                 <div id = 'parent_container' className = 'fade_transition'>

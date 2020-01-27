@@ -3,6 +3,8 @@ const express = require('express');
 const router = express.Router();
 const Months = require('../../models/Months');
 
+// will be for doctor side. they can log in and make a request to see all the appointments for a given month
+
 router.get('/', async (req, res) => {
     try {
         const month = await Months
