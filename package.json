@@ -22,10 +22,12 @@
   "dependencies": {
     "bcrypt": "^3.0.7",
     "body-parser": "^1.19.0",
+    "compression": "^1.7.4",
     "concurrently": "^5.0.2",
     "express": "^4.17.1",
     "express-fileupload": "^1.1.6",
     "faker": "^4.1.0",
+    "helmet": "^3.21.2",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.8.2",
     "nodemailer": "^6.4.2",
