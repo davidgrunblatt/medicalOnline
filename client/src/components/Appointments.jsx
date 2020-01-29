@@ -7,14 +7,16 @@ import '../styles/appointments.css';
 class Appointments extends Component {
   state = {
     date: new Date(),
+    token: this.props.jwt_decode,
     selectedYear: '', 
     selectedMonth: '', 
     selectedDate: '', 
     selectedDay: '',
-    selectedTime: undefined, //populate array with taken dates 
-    patient: '',
+    selectedTime: undefined, 
+    patient: '', 
     notes: '', 
-    times: []
+    times: [],
+    successful: false
   }
  
   // DATE SELECTION
@@ -25,7 +27,9 @@ class Appointments extends Component {
     const selectedDate = this.state.date.getDate(); 
     const selectedDay = this.state.date.getDay();
     this.setState({ selectedYear, selectedMonth, selectedDate, selectedDay }, 
-      () => {this.date_checker(selectedYear, selectedMonth, selectedDate)});
+      () => {
+        this.date_checker(selectedYear, selectedMonth, selectedDate);
+      });
   }
 
   // TIME SELECTION 
@@ -43,27 +47,41 @@ class Appointments extends Component {
       }
     })
     .then(appointments => {
-      console.log(appointments); 
       const times = appointments.data;
       this.setState({ times }, () => console.log('state times', this.state.times)); 
     })
     .catch(ex => console.log('Unable to retrieve appointments', ex)); 
   }
 
+  // NOTE HANDLER 
+  note_handler = (e) => {
+    this.setState({ [e.target.name]: e.target.value }); 
+  }
+
   // CREATE APPOINTMENT HANDLER 
   appointmentGenerator = async () => {
-      await axios.post('/api/make_appointment', {
-        selectedYear:this.state.selectedYear,
-        selectedMonth:this.state.selectedMonth,
-        selectedDate:this.state.selectedDate,
-        selectedTime:this.state.selectedTime,
-        patient:this.state.patient,
-        notes:this.state.notes
-      })
-      .then(appointment => {
-        console.log('Successfully made an appointment!', appointment); 
-      })
-      .catch(ex => console.log('Unable to make axios req', ex)); 
+    if (this.state.selectedTime && this.state.notes){
+        await axios.post('/api/make_appointment', {
+          selectedYear:this.state.selectedYear,
+          selectedMonth:this.state.selectedMonth,
+          selectedDate:this.state.selectedDate,
+          selectedTime:this.state.selectedTime,
+          patient:this.state.token().username,
+          email:this.state.token().email,
+          notes:this.state.notes
+        })
+        .then(appointment => {
+          console.log('Successfully made an appointment!', appointment);
+          this.setState({ successful: true });
+          setTimeout(() => this.setState({ 
+            successful: false,
+            notes: ''
+           }), 2500);  
+        })
+        .catch(ex => console.log('Unable to make axios req', ex)); 
+      } else {
+        alert('Please select an available time and state a reason for your visit.'); 
+      }
   }
 
   componentDidMount(){
@@ -88,6 +106,7 @@ class Appointments extends Component {
         />
         {/* DATE SELECTED DISPLAY */}
         <div className = 'date_container'>
+          <h4>Available times</h4>
             <div className = 'date_selected'>
               <p>Year: {this.state.selectedYear}</p>
               <p>Month: {this.state.selectedMonth}</p>
@@ -97,7 +116,6 @@ class Appointments extends Component {
             </div>
             {/* AVAILABLE TIMES BELOW  */}
             <div className = 'times'>
-                <h4>Available times</h4>
                 <ul>
                     {this.state.times && this.state.times.map(item => {
                         return <li key = {this.state.times.indexOf(item)} onClick = {this.selectTime}
@@ -107,7 +125,17 @@ class Appointments extends Component {
                     })}
                 </ul>
             </div>
-          <button className = 'btn btn-block' onClick = {this.appointmentGenerator} >Select date</button>
+            {this.state.selectedTime && 
+              <div className = 'reason_for_visit'>
+                <h6>What is the reason for your consultation?</h6>
+                <textarea name = "notes" onChange = {this.note_handler} value = {this.state.notes}
+                          placeholder = 'State the reason for your visit...'
+                ></textarea>
+              </div>
+            }
+          <button className = 'btn btn-primary btn-block' onClick = {this.appointmentGenerator} >
+            {this.state.successful ? "Appointment made!" : "Confirm Appointment"}
+          </button>
         </div>
       </div>
     );

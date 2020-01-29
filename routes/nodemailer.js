@@ -2,7 +2,6 @@
 const express = require('express');
 const router = express.Router();
 const nodemailer = require('nodemailer'); 
-const path = require('path'); 
 
 router.post('/', async (req, res) => {
 
@@ -15,7 +14,7 @@ router.post('/', async (req, res) => {
 
     try {
         // create reusable transporter object using the default SMTP transport
-        let transporter = await nodemailer.createTransport({
+        let transporter = nodemailer.createTransport({
         host: "smtp.gmail.com",
         port: 587,
         secure: false, // true for 465, false for other ports

@@ -17,6 +17,7 @@ import Contact from './components/Contact';
 import About from './components/About'; 
 import Footer from './components/Footer'; 
 import Appointments from './components/Appointments'; 
+import Appointments2 from './components/Appointments2'; 
 
 
 class App extends React.Component {
@@ -370,6 +371,7 @@ class App extends React.Component {
                        <Contact /> 
                        <Footer /> 
                     </footer>
+                    {/* <Appointments2 />  */}
                 </div>
             );
         }
@@ -407,7 +409,7 @@ class App extends React.Component {
                         /> 
                     </header>
                     <main>
-                        { this.state.logged ? <Appointments /> : <Login login = {login_props} /> }
+                        { this.state.logged ? <Appointments jwt_decode = {this.jwt_decode} /> : <Login login = {login_props} /> }
                     </main>
                     <footer>
                        <Contact /> 

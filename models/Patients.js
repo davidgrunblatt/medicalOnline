@@ -50,6 +50,7 @@ patient_schema.methods.generateAuthToken = function(){
     const token = jwt.sign({
         user_id: this._id,
         username: this.username,
+        email: this.email, 
         isAdmin: this.isAdmin
     }, process.env.jwtPrivateKey); 
     

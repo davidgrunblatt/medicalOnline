@@ -21,15 +21,16 @@
 
 .calendar, .date_container {
     border: solid thick rgba(255, 187, 0, 0.863);
-    height: 310px;
+    min-height: 310px;
 }
 
 .date_selected {
     display: flex;
-    margin-left: -10px;
+    margin-left: -5px;
 }
 
 .date_selected p {
+    font-size: 15px;
     margin: 5px;
 }
 
@@ -52,4 +53,13 @@ ul li {
 
 ul li:hover {
     color: orange;
+}
+
+.reason_for_visit {
+   
+}
+
+.reason_for_visit textarea {
+   width: 100%;
+   border: solid thick rgba(192, 192, 192, 0.466);
 }

@@ -21,6 +21,11 @@ nav p {
 .nav_item img{
     width: 25px;
     height: 25px;
+    border-radius: 50%;
+}
+
+#appointment_img {
+    border-radius: 0px;
 }
 
 nav a:hover {
