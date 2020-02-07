@@ -7,7 +7,6 @@ import jwtDecode from 'jwt-decode';
 import Joi from 'joi-browser'; 
 
 // COMPONENTS
-import Carousel from './components/Carousel'; 
 import Jumbotron from './components/Jumbotron'; 
 import Navbar from './components/sidebar'; 
 import Login from './components/Login'; 
@@ -17,8 +16,6 @@ import Contact from './components/Contact';
 import About from './components/About'; 
 import Footer from './components/Footer'; 
 import Appointments from './components/Appointments'; 
-import Appointments2 from './components/Appointments2'; 
-
 
 class App extends React.Component {
     constructor(props){
@@ -89,7 +86,7 @@ class App extends React.Component {
         const root = document.querySelector('#parent_container');
         setTimeout(() => {
             root.classList.add('fade_in'); 
-        }, 2000);
+        }, 500);
     }
 
     // FILE UPLOAD  // FILE UPLOAD  // FILE UPLOAD // FILE UPLOAD  // FILE UPLOAD  // FILE UPLOAD
@@ -104,7 +101,6 @@ class App extends React.Component {
         e.preventDefault();
         const form = new FormData();
         form.append('file', this.state.file);
-        this.setState({ file_saved: true });
 
         await axios.post('/api/file_upload', form, {
             headers: {
@@ -113,6 +109,7 @@ class App extends React.Component {
             }, 
         })
         .then( data => {
+            this.setState({ file_saved: true });
             setTimeout(() => {
                 this.setState({ file_saved: false }); 
             }, 1000); 

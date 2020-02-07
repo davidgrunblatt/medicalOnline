@@ -71,7 +71,6 @@ class Appointments extends Component {
           notes:this.state.notes
         })
         .then(appointment => {
-          console.log('Successfully made an appointment!', appointment);
           this.setState({ successful: true });
           setTimeout(() => this.setState({ 
             successful: false,
