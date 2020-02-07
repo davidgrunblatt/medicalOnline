@@ -96,7 +96,6 @@ class App extends React.Component {
     file_change = (e) => {
         if (e.target.type === 'file') {
             this.setState({ file: e.target.files[0] }, () => console.log('file state', this.state.file)); 
-            console.log(e.target.value);
         }
     }
 
@@ -114,15 +113,16 @@ class App extends React.Component {
             }, 
         })
         .then( data => {
-            console.log('file sent', data);
             setTimeout(() => {
                 this.setState({ file_saved: false }); 
             }, 1000); 
         } )
         .catch( ex => {
-            console.log('unable to send file', ex);
             const error = 'unable to send file. try again shortly.';
-            this.setState({ error }); 
+            this.setState({ 
+                error,
+                file_saved: false
+            }); 
             alert(this.state.error); 
         } ); 
     }
