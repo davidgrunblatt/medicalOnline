@@ -13,13 +13,12 @@ if(!process.env.jwtPrivateKey) process.exit(1);
 // STARTUP
 require('./startup/routes')(app); // ROUTES 
 
-// SECURE RESPONSE HEADERS
-app.use(helmet()); 
-// MINIFY JS FILES
-app.use(compression()); 
-
 if(process.env.NODE_ENV === 'production'){
     app.use(express.static('./client/build')); 
+    // SECURE RESPONSE HEADERS
+    app.use(helmet()); 
+    // MINIFY JS FILES
+    app.use(compression()); 
 }
 
 // CONNECT TO PORT
