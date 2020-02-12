@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 import Calendar from 'react-calendar';
 import axios from 'axios'; 
 import '../styles/appointments.css'; 
+import months from './months'; 
+import days from './days'; 
  
 class Appointments extends Component {
   state = {
@@ -96,6 +98,11 @@ class Appointments extends Component {
   }
  
   render() {
+    let selectedMonth = this.state.selectedMonth;
+    let month = months(selectedMonth); 
+    let selectedDay = this.state.selectedDay;
+    let day = days(selectedDay); 
+
     return (
       <div id = 'appointment_container' className = 'global_size slide_transition slide_out_left'>
         {/* CALENDAR COMPONENT */}
@@ -108,9 +115,9 @@ class Appointments extends Component {
           <h4>Available times</h4>
             <div className = 'date_selected'>
               <p>Year: {this.state.selectedYear}</p>
-              <p>Month: {this.state.selectedMonth}</p>
+              <p>Month: {month}</p>
               <p>Date: {this.state.selectedDate}</p>
-              <p>Day: {this.state.selectedDay}</p>
+              <p>Day: {day}</p>
               <p>Time: {this.state.selectedTime}</p>
             </div>
             {/* AVAILABLE TIMES BELOW  */}
