@@ -3,7 +3,6 @@
 const express = require('express');
 const app = express();
 const port = process.env.PORT || 3001;
-const mongoose = require('./startup/mongoose'); // MONGOOSE CONNECTION 
 const helmet = require('helmet'); 
 const compression = require('compression'); 
 
@@ -12,6 +11,7 @@ if(!process.env.jwtPrivateKey) process.exit(1);
 
 // STARTUP
 require('./startup/routes')(app); // ROUTES 
+require('./startup/mongoose'); // MONGOOSE CONNECTION 
 // SECURE RESPONSE HEADERS
 app.use(helmet()); 
 // MINIFY JS FILES

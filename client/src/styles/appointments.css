@@ -34,10 +34,6 @@
     margin: 5px;
 }
 
-.times { /* available times */
-
-}
-
 .times ul {
     list-style-type: none;
     display: flex;
@@ -53,10 +49,6 @@ ul li {
 
 ul li:hover {
     color: orange;
-}
-
-.reason_for_visit {
-   
 }
 
 .reason_for_visit textarea {

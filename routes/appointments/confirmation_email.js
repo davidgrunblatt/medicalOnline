@@ -2,12 +2,12 @@
 const nodemailer = require('nodemailer');
 
 module.exports = async (appointment)=> {
-    appointment.subject = 'Clinica Furelos appointment confirmation'; 
-    appointment.message = `This email is a confirmation notice of the 
-    appointment you have booked with Dr. Furelos on ${appointment.date}/${appointment.monthID}/${appointment.year}
-    at ${appointment.time}. We look forward to seeing you.`; 
-
     try {
+        appointment.subject = 'Clinica Furelos appointment confirmation'; 
+        appointment.message = `This email is a confirmation notice of the 
+        appointment you have booked with Dr. Furelos on ${appointment.date}/${appointment.monthID}/${appointment.year}
+        at ${appointment.time}. We look forward to seeing you.`; 
+        
         // create reusable transporter object using the default SMTP transport
         let transporter = nodemailer.createTransport({
         host: "smtp.gmail.com",

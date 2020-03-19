@@ -52,6 +52,7 @@ class App extends React.Component {
     page_handler = (e) => {
         if(e.target.id === 'home'){
             this.setState({ page: 'home' });
+            console.log('working'); 
         } else if (e.target.id === 'login'){
             this.setState({ page: 'dashboard' })
         } else if (e.target.id === 'consultation'){
@@ -413,7 +414,7 @@ class App extends React.Component {
                        <Footer /> 
                     </footer>
                 </div>
-             );         
+            );         
         }
     }
 }
