@@ -13,7 +13,6 @@ class Login extends React.Component{
             this.setState({ form: 0 }); 
         }
     }
-
     render(){
         const register = (
             <form onSubmit = {this.props.login.register}>
@@ -42,7 +41,6 @@ class Login extends React.Component{
                 >Back</button>
             </form>
         );
-
         return(
                 <div id = 'login' className = 'login_container global_size'>
                     <div> 

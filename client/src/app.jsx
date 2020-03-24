@@ -17,6 +17,9 @@ import About from './components/About';
 import Footer from './components/Footer'; 
 import Appointments from './components/Appointments'; 
 
+// TEST IMPORT
+import promise from './test'; 
+
 class App extends React.Component {
     constructor(props){
         super(props);
@@ -281,7 +284,6 @@ class App extends React.Component {
     // COMPONENTDIDMOUNT TRIGGERS FADE IN ON LOAD 
    async componentDidMount(){
         this.body_fade_in();
-
         // ON MOUNT CHECK IF JWT, TO RENDER PAGE
         const token = localStorage.getItem('furelosToken');
         if(token){
