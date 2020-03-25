@@ -19,6 +19,7 @@ import Appointments from './components/Appointments';
 
 // TEST IMPORT
 import promise from './test'; 
+import { loginAPI, registerAPI, populateGlobalState, updateAPI } from './api/userCRUD'; 
 
 class App extends React.Component {
     constructor(props){
@@ -153,16 +154,13 @@ class App extends React.Component {
         let dummy = this.jwt_decode();
 
         // AXIOS POST REQ TO UPDATE USER INFO
-        await axios.post('/api/update_patient', {
-            _id: dummy.user_id, // ID FROM JWT PAYLOAD
-            fullname: this.state.userData.fullname,
-            email: this.state.userData.email,
-            phone: this.state.userData.phone
-        }, {
-            headers: {
-                'x-auth-token': this.jwt()
-            }
-        })
+        await updateAPI(
+            dummy.user_id, 
+            this.state.userData.fullname, 
+            this.state.userData.email, 
+            this.state.userData.phone,
+            this.jwt()
+        )
         .then( data => {
             console.log('Updated data sent!', data);
             this.setState({ changes_saved: true }); 
@@ -183,13 +181,8 @@ class App extends React.Component {
     // LOGIN SUBMIT METHOD
     login_submit = async (e) => {
         e.preventDefault();
-        
-        await axios.get('/api/login_patient', {
-            params: {
-                username: this.state.username,
-                password: this.state.password
-            }
-        })
+        // LOGIN API REQUEST 
+        await loginAPI(this.state.username, this.state.password)
         .then( user => {
             // POPULATING GLOBAL STATE WITH API PAYLOAD
             this.setState({
@@ -219,14 +212,12 @@ class App extends React.Component {
     // REGISTER SUBMIT   REGISTER SUBMIT     REGISTER SUBMIT     REGISTER SUBMIT    REGISTER SUBMIT 
     register_submit = async (e) => {
         e.preventDefault();
-
         // JOI SCHEMA
         const schema = {
             username: Joi.string().min(4).max(15).required(),
             password: Joi.string().min(4).max(128).required(),
             email: Joi.string().email({ minDomainAtoms: 2 }).required()
         }
-
         // JOI VALIDATION 
         const validate = Joi.validate({
             username: this.state.username,
@@ -234,11 +225,8 @@ class App extends React.Component {
             password: this.state.password
         }, schema)
         .then(async () => {
-            await axios.post('/api/create_patient', {
-                username: this.state.username,
-                password: this.state.password,
-                email: this.state.email
-        })
+            // REGISTER API 
+            await registerAPI(this.state.username, this.state.email, this.state.password)
         .then( user => {
             // POPULATING GLOBAL STATE WITH API PAYLOAD
             this.setState({
@@ -287,12 +275,9 @@ class App extends React.Component {
         // ON MOUNT CHECK IF JWT, TO RENDER PAGE
         const token = localStorage.getItem('furelosToken');
         if(token){
-            await axios.get('/api/get_patient', {
-                params: {
-                    _id: this.jwt_decode(token).user_id
-                }
-            }) 
-            .then( user => {
+            // POPULATE GLOBAL STATE API 
+            await populateGlobalState(this.jwt_decode(token).user_id)
+            .then(user => {
              // POPULATING GLOBAL STATE WITH API PAYLOAD
              this.setState({
                  userData: {
