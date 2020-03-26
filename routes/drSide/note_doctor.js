@@ -1,8 +1,8 @@
 
 const express = require('express');
 const router = express.Router();
-const Doctor = require('../models/Doctors');
-const auth = require('../middleware/auth'); 
+const Doctor = require('../../models/Doctors');
+const auth = require('../../middleware/auth'); 
 
 router.post('/', auth, async (req, res) => {
     if(req.body.action === 'save'){

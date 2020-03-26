@@ -2,7 +2,7 @@
 const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcrypt'); 
-const Doctor = require('../models/Doctors'); 
+const Doctor = require('../../models/Doctors'); 
 
 router.get('/', async (req, res) => {
     // FIND DR. ACCOUNT BASED ON USERNAME

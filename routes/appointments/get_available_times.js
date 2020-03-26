@@ -27,8 +27,8 @@ router.get('/', async (req, res) => {
         // push the times of those appointments to not_available_times
         for (let i = 0; i < appointments.length; i++){
             if (appointments[i].date == selectedDate){
-            appointments_on_selectedDate.push(appointments[i]); 
-            not_available_times.push(appointments[i].time); 
+                appointments_on_selectedDate.push(appointments[i]); 
+                not_available_times.push(appointments[i].time); 
             }
         }
         // console.log("appointments", appointments_on_selectedDate); 

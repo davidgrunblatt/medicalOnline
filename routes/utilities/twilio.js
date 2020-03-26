@@ -3,7 +3,7 @@ var AccessToken = require('twilio').jwt.AccessToken;
 var VideoGrant = AccessToken.VideoGrant;
 const express = require('express');
 const router = express.Router(); 
-const auth = require('../middleware/auth'); 
+const auth = require('../../middleware/auth'); 
 
 // Endpoint to generate access token
 router.get('/', (req, res) => {

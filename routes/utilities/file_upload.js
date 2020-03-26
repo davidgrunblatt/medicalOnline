@@ -1,10 +1,10 @@
 
 const express = require('express');
 const router = express.Router();
-const auth = require('../middleware/auth'); 
+const auth = require('../../middleware/auth'); 
 const fileUpload = require('express-fileupload');
 const path = require('path'); 
-const Patient = require('../models/Patients'); 
+const Patient = require('../../models/Patients'); 
 const nodemailer = require('nodemailer'); 
 const jwt = require('jsonwebtoken'); 
 

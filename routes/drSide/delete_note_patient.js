@@ -1,7 +1,7 @@
 
 const express = require('express'); 
 const router = express.Router();
-const Patient = require('../models/Patients');
+const Patient = require('../../models/Patients');
 
 router.post('/', async (req, res) => {
     try{

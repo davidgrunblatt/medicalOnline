@@ -1,7 +1,7 @@
 
 const express = require('express');
 const router = express.Router();
-const Doctor = require('../models/Doctors'); 
+const Doctor = require('../../models/Doctors'); 
 const bcrypt = require('bcrypt'); 
 
 router.post('/', async (req, res) => {

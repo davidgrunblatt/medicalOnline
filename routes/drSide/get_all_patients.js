@@ -1,8 +1,8 @@
 
 const express = require('express');
 const router = express.Router(); 
-const Patients = require('../models/Patients'); 
-const isAdmin = require('../middleware/isAdmin'); 
+const Patients = require('../../models/Patients'); 
+const isAdmin = require('../../middleware/isAdmin'); 
 
 router.get('/', isAdmin, async (req, res) => {
     try {

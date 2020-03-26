@@ -18,7 +18,6 @@ import Footer from './components/Footer';
 import Appointments from './components/Appointments'; 
 
 // TEST IMPORT
-import promise from './test'; 
 import { loginAPI, registerAPI, populateGlobalState, updateAPI } from './api/userCRUD'; 
 
 class App extends React.Component {
@@ -274,9 +273,11 @@ class App extends React.Component {
         this.body_fade_in();
         // ON MOUNT CHECK IF JWT, TO RENDER PAGE
         const token = localStorage.getItem('furelosToken');
+        const decoded = await this.jwt_decode(token);
+        console.log(decoded); 
         if(token){
             // POPULATE GLOBAL STATE API 
-            await populateGlobalState(this.jwt_decode(token).user_id)
+            await populateGlobalState(decoded.user_id)
             .then(user => {
              // POPULATING GLOBAL STATE WITH API PAYLOAD
              this.setState({

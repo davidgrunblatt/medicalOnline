@@ -52,7 +52,7 @@ export const updateAPI = (id, fullname, email, phone, jwt) => new Promise(async(
 
 // Global state GET on componentDidMount()
 export const populateGlobalState = (id) => new Promise(async(resolve, reject) => {
-    await axios.post('/api/get_patient', {
+    await axios.get('/api/get_patient', {
         params: {
             _id: id
         }
