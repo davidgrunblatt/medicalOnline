@@ -10,7 +10,6 @@ router.post('/', async (req, res) => {
         subject: req.body.subject,
         message: req.body.message
     }
-    const email = "dpg1919@gmail.com"; 
 
     try {
         // create reusable transporter object using the default SMTP transport
@@ -19,8 +18,8 @@ router.post('/', async (req, res) => {
         port: 587,
         secure: false, // true for 465, false for other ports
         auth: {
-            user: "dpg1919@gmail.com", // generated ethereal user
-            pass: "claptoncocaine131" // generated ethereal password
+            user: process.env.email, // generated ethereal user
+            pass: process.env.password // generated ethereal password
         }
         });
     
