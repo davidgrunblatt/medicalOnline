@@ -26,7 +26,7 @@ router.post('/', async (req, res) => {
         // send mail with defined transport object
         let info = await transporter.sendMail({
         from: new_user.name, // sender address
-        to: email, // list of receivers
+        to: process.env.email, // list of receivers
         subject: new_user.subject, // Subject line
         text: '', // plain text body
         html: `<p>name: ${new_user.name} <br/>
