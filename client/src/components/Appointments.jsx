@@ -74,10 +74,13 @@ class Appointments extends Component {
         })
         .then(appointment => {
           this.setState({ successful: true });
-          setTimeout(() => this.setState({ 
-            successful: false,
-            notes: ''
-           }), 2500);  
+          setTimeout(() => {
+            this.setState({ 
+              successful: false,
+              notes: ''
+            });
+            this.date_checker(this.state.date.getFullYear(), this.state.date.getMonth(), this.state.date.getDate());
+          }, 2500);  
         })
         .catch(ex => console.log('Unable to make axios req', ex)); 
       } else {
@@ -106,7 +109,7 @@ class Appointments extends Component {
     return (
       <div id = 'appointment_container' className = 'global_size slide_transition slide_out_left'>
         {/* CALENDAR COMPONENT */}
-        <Calendar className = 'calendar'
+        <Calendar className = 'calendar' minDate={new Date()}
           onChange={this.onChange}
           value={this.state.date}
         />
