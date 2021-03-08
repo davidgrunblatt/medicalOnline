@@ -321,7 +321,9 @@ class App extends React.Component {
             return ( 
                 <div id = 'parent_container' className = 'fade_transition'>
                     <header className = 'header'>
-                        <img src = {require('./images/logo.png')} alt = 'brand logo' />
+                        <a href='/'>
+                            <img src = {require('./images/logo.png')} alt = 'logo' />
+                        </a>
                         <Navbar page_handler = {this.page_handler} logged = {this.state.logged} logout = {this.logout_handler} 
                                 onSetSidebarOpen = {this.onSetSidebarOpen} 
                                 sidebarOpen = {this.state.sidebarOpen}
@@ -343,8 +345,10 @@ class App extends React.Component {
             return ( 
                 <div id = 'parent_container' className = 'fade_transition'>
                     <header className = 'header'>
-                        <img src = {require('./images/logo.png')} alt = 'brand logo' />
-                        <Navbar  page_handler = {this.page_handler} logged = {this.state.logged} logout = {this.logout_handler} 
+                        <a href='/'>
+                            <img src = {require('./images/logo.png')} alt = 'logo' />
+                        </a>
+                        <Navbar page_handler = {this.page_handler} logged = {this.state.logged} logout = {this.logout_handler} 
                                 onSetSidebarOpen = {this.onSetSidebarOpen} 
                                 sidebarOpen = {this.state.sidebarOpen} /> 
                     </header>
@@ -366,8 +370,10 @@ class App extends React.Component {
             return ( 
                 <div id = 'parent_container' className = 'fade_transition'>
                     <header className = 'header'>
-                        <img src = {require('./images/logo.png')} alt = 'brand logo' />
-                        <Navbar  page_handler = {this.page_handler} logged = {this.state.logged} logout = {this.logout_handler} 
+                        <a href='/'>
+                            <img src = {require('./images/logo.png')} alt = 'logo' />
+                        </a>
+                        <Navbar page_handler = {this.page_handler} logged = {this.state.logged} logout = {this.logout_handler} 
                                 onSetSidebarOpen = {this.onSetSidebarOpen}
                                 sidebarOpen = {this.state.sidebarOpen} />  
                     </header>
@@ -388,7 +394,9 @@ class App extends React.Component {
             return ( 
                 <div id = 'parent_container' className = 'fade_transition'>
                     <header className = 'header'>
-                        <img src = {require('./images/logo.png')} alt = 'brand logo' />
+                        <a href='/'>
+                            <img src = {require('./images/logo.png')} alt = 'logo' />
+                        </a>
                         <Navbar page_handler = {this.page_handler} logged = {this.state.logged} logout = {this.logout_handler} 
                                 onSetSidebarOpen = {this.onSetSidebarOpen} 
                                 sidebarOpen = {this.state.sidebarOpen}

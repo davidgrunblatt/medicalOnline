@@ -31,8 +31,6 @@ router.get('/', async (req, res) => {
                 not_available_times.push(appointments[i].time); 
             }
         }
-        // console.log("appointments", appointments_on_selectedDate); 
-        // console.log('times not available.', not_available_times); 
 
         /// times - filter out the times in not_available_times
         let available = times.filter((e) => {

@@ -10,7 +10,9 @@ class Navbar extends Component {
         const content = 
         <div className = 'navbar_container'>
             <span>
-                <img src = {require('../images/logo.png')} alt = 'logo' />
+                <a href='/'>
+                    <img src = {require('../images/logo.png')} alt = 'logo' />
+                </a>
             </span>
             <nav>
                 <a className = 'nav_item' onClick = {this.props.page_handler} >
