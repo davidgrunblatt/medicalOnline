@@ -1,0 +1,19 @@
+
+{
+    "name": "Furelos Online",
+    "short_name": "Furelos Online",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#fff",
+    "description": "Furelos online provides live teleconference services with Dr. Furelos.",
+    "icons": [{
+      "src": "./img/logo512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }, 
+    {
+      "src": "./img/logo192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }]
+}

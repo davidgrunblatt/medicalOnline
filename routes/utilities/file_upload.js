@@ -17,7 +17,7 @@ router.post('/', auth, async(req, res) => {
   }
 
   // DECODED JWT PAYLOAD 
-  const decoded = await jwt.verify(req.header('x-auth-token'), process.env.jwtPrivateKey);
+  const decoded = jwt.verify(req.header('x-auth-token'), process.env.jwtPrivateKey);
 
   // FIND ACCOUNT WITH USER ID FOUND IN REQ.PATIENT. req.patient comes from auth middleware .verify()
   const account = Patient
@@ -71,7 +71,7 @@ router.post('/', auth, async(req, res) => {
         // send mail with defined transport object
         let info = await transporter.sendMail({
         from: file_object.username, // sender address
-        to: "dpg1919@gmail.com", // list of receivers
+        to: process.env.email, // list of receivers
         subject: save_as, // Subject line
         text: '', // plain text body,
         attachments: {
