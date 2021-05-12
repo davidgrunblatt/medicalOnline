@@ -30,7 +30,7 @@
     "helmet": "^3.21.2",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.8.2",
-    "nodemailer": "^6.4.2",
+    "nodemailer": "^6.4.16",
     "twilio": "^3.39.1"
   }
 }
